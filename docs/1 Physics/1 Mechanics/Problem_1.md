@@ -12,48 +12,48 @@ Projectile motion is described using kinematic equations that govern horizontal 
 
 ### **1. Horizontal Motion**
 The horizontal displacement \( x \) is given by:
-\[
+$$
  x = v_0 \cos(\theta) t
-\]
+$$
 Since there is no horizontal acceleration (ignoring air resistance), the velocity in this direction remains constant.
 
 ### **2. Vertical Motion**
 The vertical displacement \( y \) is given by:
-\[
+$$
  y = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-\]
+$$
 Gravity acts downward, causing the projectile to reach a maximum height before descending.
 
 ### **3. Time of Flight**
 To find the total time the projectile stays in the air, we set the vertical displacement to zero when it returns to the initial launch height:
-\[
+$$
  0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-\]
+$$
 Factoring out \( t \):
-\[
+$$
  t \left( v_0 \sin(\theta) - \frac{1}{2} g t \right) = 0
-\]
+$$
 Solving for \( t \), we get two solutions:
-\[
+$$
  t = 0 \quad \text{(initial launch)}
-\]
-\[
+$$
+$$
  t = \frac{2 v_0 \sin(\theta)}{g} \quad \text{(total flight time)}
-\]
+$$
 
 ### **4. Range Equation**
 The range \( R \) is the total horizontal displacement when the projectile returns to the launch height:
-\[
+$$
  R = v_0 \cos(\theta) t_{total}
-\]
+$$
 Substituting \( t_{total} = \frac{2 v_0 \sin(\theta)}{g} \):
-\[
+$$
  R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}
-\]
+$$
 Using the trigonometric identity \( 2 \sin(\theta) \cos(\theta) = \sin(2\theta) \), we simplify:
-\[
+$$
  R = \frac{v_0^2 \sin(2\theta)}{g}
-\]
+$$
 This equation shows that the range is maximized when \( \theta = 45^\circ \), where \( \sin(90^\circ) = 1 \).
 
 ---
