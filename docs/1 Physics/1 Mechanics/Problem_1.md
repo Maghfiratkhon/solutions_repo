@@ -7,15 +7,26 @@ Projectile motion is a fundamental concept in physics that describes the motion 
 ## Governing Equations
 The motion of a projectile can be analyzed using the following kinematic equations:
 
-- **Horizontal motion:**
-  \[ x = v_0 \cos(\theta) t \]
-- **Vertical motion:**
-  \[ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]
-- **Time of flight:**
-  \[ t_{total} = \frac{2 v_0 \sin(\theta)}{g} \]
-- **Range equation:**
-  \[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
-  This equation shows that the range is maximized when \( \theta = 45^\circ \).
+### Horizontal Motion
+\[
+ x = v_0 \cos(\theta) t
+\]
+
+### Vertical Motion
+\[
+ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+\]
+
+### Time of Flight
+\[
+ t_{total} = \frac{2 v_0 \sin(\theta)}{g}
+\]
+
+### Range Equation
+\[
+ R = \frac{v_0^2 \sin(2\theta)}{g}
+\]
+This equation shows that the range is maximized when \( \theta = 45^\circ \).
 
 ## Implementation in Python
 The following Python script computes and visualizes the projectile range for different angles of projection.
@@ -67,5 +78,4 @@ plt.show()
 
 ## Conclusion
 This analysis demonstrates the dependence of projectile range on the angle of projection. By adjusting parameters like initial velocity and gravity, we can extend this model to more complex scenarios, such as projectiles on different terrains or in the presence of air resistance.
-
 
