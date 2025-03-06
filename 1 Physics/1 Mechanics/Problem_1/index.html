@@ -172,41 +172,6 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants">Constants</h1>
-<p>g = 9.81  # gravitational acceleration (m/s^2)
-v0 = 20   # initial velocity (m/s)
-theta_range = np.linspace(0, 90, 100)  # angles in degrees</p>
-<h1 id="derivation-of-the-range-equation">Derivation of the range equation:</h1>
-<h1 id="the-equations-of-motion-for-projectile-motion-are">The equations of motion for projectile motion are:</h1>
-<h1 id="horizontal-motion-x-v0-costheta-t">Horizontal motion: x = v0 * cos(theta) * t</h1>
-<h1 id="vertical-motion-y-v0-sintheta-t-12-g-t2">Vertical motion: y = v0 * sin(theta) * t - (1/2) * g * t^2</h1>
-<h1 id="the-total-time-of-flight-is-derived-from-setting-y-0">The total time of flight is derived from setting y = 0:</h1>
-<h1 id="t_total-2-v0-sintheta-g">t_total = (2 * v0 * sin(theta)) / g</h1>
-<h1 id="the-range-is-given-by-r-v0-costheta-t_total">The range is given by: R = v0 * cos(theta) * t_total</h1>
-<h1 id="substituting-t_total-we-get">Substituting t_total, we get:</h1>
-<h1 id="r-v02-sin2-theta-g">R = (v0^2 * sin(2 * theta)) / g</h1>
-<h1 id="function-to-calculate-range">Function to calculate range</h1>
-<p>def projectile_range(v0, theta, g=9.81):
-    """Computes the range of a projectile for a given initial velocity and angle."""
-    theta_rad = np.radians(theta)  # Convert angle to radians
-    return (v0**2 * np.sin(2 * theta_rad)) / g  # Range formula</p>
-<h1 id="compute-ranges-for-different-angles">Compute ranges for different angles</h1>
-<p>ranges = projectile_range(v0, theta_range, g)</p>
-<h1 id="plot-results">Plot results</h1>
-<p>plt.figure(figsize=(8, 5))
-plt.plot(theta_range, ranges, label=f'Initial Velocity = {v0} m/s', color='b')
-plt.xlabel("Angle of Projection (degrees)")
-plt.ylabel("Range (meters)")
-plt.title("Projectile Range as a Function of Angle of Projection")
-plt.legend()
-plt.grid()
-plt.show()</p>
-<h1 id="observations">Observations:</h1>
-<h1 id="-the-range-is-maximum-at-45-degrees">- The range is maximum at 45 degrees.</h1>
-<h1 id="-the-trajectory-is-symmetric-around-45-degrees">- The trajectory is symmetric around 45 degrees.</h1>
-<h1 id="-increasing-initial-velocity-increases-the-range-quadratically">- Increasing initial velocity increases the range quadratically.</h1>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
