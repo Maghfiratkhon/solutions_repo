@@ -1,34 +1,63 @@
 # Problem 1
-# Projectile Motion Analysis
+# **Projectile Motion Analysis**
 
-## Introduction
-Projectile motion is a fundamental concept in physics that describes the motion of an object thrown into the air under the influence of gravity. This analysis investigates how the range of a projectile depends on the angle of projection.
+## **Introduction**
+Projectile motion is a fundamental concept in physics that describes the motion of an object launched into the air, subject to gravitational acceleration. It is widely used in physics, engineering, and real-world applications such as ballistics, sports, and space exploration. 
 
-## Governing Equations
-The motion of a projectile can be analyzed using the following kinematic equations:
+This analysis explores how the range of a projectile depends on the angle of projection. We derive the governing equations and implement a Python script to visualize the relationship between range and angle.
 
-### Horizontal Motion
+---
+## **Governing Equations**
+Projectile motion is described using kinematic equations that govern horizontal and vertical displacement.
+
+### **1. Horizontal Motion**
+The horizontal displacement \( x \) is given by:
 \[
  x = v_0 \cos(\theta) t
 \]
+Since there is no horizontal acceleration (ignoring air resistance), the velocity in this direction remains constant.
 
-### Vertical Motion
+### **2. Vertical Motion**
+The vertical displacement \( y \) is given by:
 \[
  y = v_0 \sin(\theta) t - \frac{1}{2} g t^2
 \]
+Gravity acts downward, causing the projectile to reach a maximum height before descending.
 
-### Time of Flight
+### **3. Time of Flight**
+To find the total time the projectile stays in the air, we set the vertical displacement to zero when it returns to the initial launch height:
 \[
- t_{total} = \frac{2 v_0 \sin(\theta)}{g}
+ 0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+\]
+Factoring out \( t \):
+\[
+ t \left( v_0 \sin(\theta) - \frac{1}{2} g t \right) = 0
+\]
+Solving for \( t \), we get two solutions:
+\[
+ t = 0 \quad \text{(initial launch)}
+\]
+\[
+ t = \frac{2 v_0 \sin(\theta)}{g} \quad \text{(total flight time)}
 \]
 
-### Range Equation
+### **4. Range Equation**
+The range \( R \) is the total horizontal displacement when the projectile returns to the launch height:
+\[
+ R = v_0 \cos(\theta) t_{total}
+\]
+Substituting \( t_{total} = \frac{2 v_0 \sin(\theta)}{g} \):
+\[
+ R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}
+\]
+Using the trigonometric identity \( 2 \sin(\theta) \cos(\theta) = \sin(2\theta) \), we simplify:
 \[
  R = \frac{v_0^2 \sin(2\theta)}{g}
 \]
-This equation shows that the range is maximized when \( \theta = 45^\circ \).
+This equation shows that the range is maximized when \( \theta = 45^\circ \), where \( \sin(90^\circ) = 1 \).
 
-## Implementation in Python
+---
+## **Implementation in Python**
 The following Python script computes and visualizes the projectile range for different angles of projection.
 
 ```python
@@ -70,12 +99,13 @@ plt.grid(True, linestyle='--', alpha=0.6)
 plt.show()
 ```
 
-## Observations
-- The range is maximum at 45 degrees.
-- The trajectory is symmetric around 45 degrees.
-- Increasing initial velocity increases the range quadratically.
-- This model ignores air resistance, which would reduce the actual range in real-world scenarios.
+---
+## **Observations**
+- The range is maximum at **45 degrees**.
+- The trajectory is symmetric around **45 degrees**.
+- Increasing the initial velocity increases the range **quadratically**.
+- **Real-world factors** such as air resistance reduce the actual range compared to the idealized model.
 
-## Conclusion
-This analysis demonstrates the dependence of projectile range on the angle of projection. By adjusting parameters like initial velocity and gravity, we can extend this model to more complex scenarios, such as projectiles on different terrains or in the presence of air resistance.
-
+---
+## **Conclusion**
+This analysis demonstrates the dependence of projectile range on the angle of projection. By adjusting parameters like initial velocity and gravity, we can extend this model to more complex scenarios, such as projectiles launched on different terrains or in the presence of air resistance.
