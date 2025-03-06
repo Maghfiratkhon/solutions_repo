@@ -181,45 +181,45 @@
 <p>Projectile motion is described using kinematic equations that govern horizontal and vertical displacement.</p>
 <h3 id="1-horizontal-motion"><strong>1. Horizontal Motion</strong></h3>
 <p>The horizontal displacement <span class="arithmatex">\( x \)</span> is given by:
-[
+$$
  x = v_0 \cos(\theta) t
-]
+$$
 Since there is no horizontal acceleration (ignoring air resistance), the velocity in this direction remains constant.</p>
 <h3 id="2-vertical-motion"><strong>2. Vertical Motion</strong></h3>
 <p>The vertical displacement <span class="arithmatex">\( y \)</span> is given by:
-[
+$$
  y = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-]
+$$
 Gravity acts downward, causing the projectile to reach a maximum height before descending.</p>
 <h3 id="3-time-of-flight"><strong>3. Time of Flight</strong></h3>
 <p>To find the total time the projectile stays in the air, we set the vertical displacement to zero when it returns to the initial launch height:
-[
+$$
  0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-]
+$$
 Factoring out <span class="arithmatex">\( t \)</span>:
-[
+$$
  t \left( v_0 \sin(\theta) - \frac{1}{2} g t \right) = 0
-]
+$$
 Solving for <span class="arithmatex">\( t \)</span>, we get two solutions:
-[
+$$
  t = 0 \quad \text{(initial launch)}
-]
-[
+$$
+$$
  t = \frac{2 v_0 \sin(\theta)}{g} \quad \text{(total flight time)}
-]</p>
+$$</p>
 <h3 id="4-range-equation"><strong>4. Range Equation</strong></h3>
 <p>The range <span class="arithmatex">\( R \)</span> is the total horizontal displacement when the projectile returns to the launch height:
-[
+$$
  R = v_0 \cos(\theta) t_{total}
-]
+$$
 Substituting <span class="arithmatex">\( t_{total} = \frac{2 v_0 \sin(\theta)}{g} \)</span>:
-[
+$$
  R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}
-]
+$$
 Using the trigonometric identity <span class="arithmatex">\( 2 \sin(\theta) \cos(\theta) = \sin(2\theta) \)</span>, we simplify:
-[
+$$
  R = \frac{v_0^2 \sin(2\theta)}{g}
-]
+$$
 This equation shows that the range is maximized when <span class="arithmatex">\( \theta = 45^\circ \)</span>, where <span class="arithmatex">\( \sin(90^\circ) = 1 \)</span>.</p>
 <hr/>
 <h2 id="implementation-in-python"><strong>Implementation in Python</strong></h2>
