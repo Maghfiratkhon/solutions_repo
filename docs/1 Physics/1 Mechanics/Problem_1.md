@@ -1,3 +1,4 @@
+Problem #1
 # Investigating the Range as a Function of the Angle of Projection
 
 Projectile motion is a cornerstone of classical mechanics, offering a blend of simplicity and depth that makes it an ideal subject for exploration. In this investigation, we’ll derive the equations governing projectile motion, analyze how the horizontal range depends on the angle of projection, explore real-world applications, and implement a computational tool to visualize the results. Let’s embark on this journey through physics, mathematics, and computation.
@@ -78,28 +79,32 @@ For uneven terrain (\( y_{\text{land}} \neq 0 \)) or air resistance (\( F = -k v
 
 ## 4. Implementation
 
-Here’s a Python script using NumPy and Matplotlib to simulate and visualize the range versus angle:
+In this section, we’ll create a computational tool to simulate projectile motion and visualize how the range changes with the angle of projection. We’ll use Python with the NumPy library for calculations and Matplotlib for plotting. The goal is to make the results clear and visually appealing, showing the effects of different initial velocities and gravitational constants.
+
+### Simulation Code
+
+Below is the Python script that performs the simulation:
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Parameters
-v0 = 20.0  # initial velocity (m/s)
-g = 9.8    # gravity (m/s^2)
-angles_deg = np.linspace(0, 90, 91)  # angles from 0 to 90 degrees
-angles_rad = np.radians(angles_deg)
+# Define initial parameters
+v0 = 20.0  # Initial velocity in meters per second
+g = 9.8    # Gravitational acceleration in m/s^2 (Earth)
+angles_deg = np.linspace(0, 90, 91)  # Angles from 0 to 90 degrees in 1-degree steps
+angles_rad = np.radians(angles_deg)  # Convert degrees to radians for calculations
 
-# Range function
+# Function to calculate range based on angle, velocity, and gravity
 def range_projectile(v0, theta, g):
     return (v0**2 * np.sin(2 * theta)) / g
 
-# Compute ranges
+# Calculate ranges for the base case
 ranges = range_projectile(v0, angles_rad, g)
 
-# Plot
+# Create the first plot: Range vs. Angle for a single case
 plt.figure(figsize=(10, 6))
-plt.plot(angles_deg, ranges, label=f'v0 = {v0} m/s, g = {g} m/s²')
+plt.plot(angles_deg, ranges, label=f'v0 = {v0} m/s, g = {g} m/s²', color='blue')
 plt.xlabel('Angle of Projection (degrees)')
 plt.ylabel('Range (meters)')
 plt.title('Range vs. Angle of Projection')
@@ -107,18 +112,19 @@ plt.grid(True)
 plt.legend()
 plt.show()
 
-# Vary v0 and g
-v0_values = [10, 20, 30]
-g_values = [9.8, 1.62]  # Earth and Moon
+# Explore multiple scenarios with different v0 and g values
+v0_values = [10, 20, 30]       # Different initial velocities (m/s)
+g_values = [9.8, 1.62]         # Gravity on Earth and Moon (m/s^2)
 
+# Create the second plot: Compare different conditions
 plt.figure(figsize=(10, 6))
 for v0 in v0_values:
     for g in g_values:
         ranges = range_projectile(v0, angles_rad, g)
         plt.plot(angles_deg, ranges, label=f'v0 = {v0} m/s, g = {g} m/s²')
-plt.xlabel('Angle (degrees)')
-plt.ylabel('Range (m)')
-plt.title('Range for Different v0 and g')
-plt.legend()
+plt.xlabel('Angle of Projection (degrees)')
+plt.ylabel('Range (meters)')
+plt.title('Range vs. Angle for Different Initial Velocities and Gravity')
 plt.grid(True)
+plt.legend()
 plt.show()
