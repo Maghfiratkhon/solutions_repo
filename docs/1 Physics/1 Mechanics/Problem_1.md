@@ -27,6 +27,8 @@ The horizontal and vertical displacements of the projectile as a function of tim
 $$
  x = v_0 \cos(\theta) t,
 $$
+
+
 $$
  y = v_0 \sin(\theta) t - \frac{1}{2} g t^2.
 $$
