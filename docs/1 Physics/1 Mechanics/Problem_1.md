@@ -99,8 +99,11 @@ plt.show()
 
 Projectile motion is fundamental in many real-world applications, including:
 - **Sports physics:** Determining optimal angles for maximum distance in soccer, golf, or javelin throws.
+
 - **Engineering:** Designing artillery, missile trajectories, and launch mechanisms.
+
 - **Astronomy:** Calculating planetary lander descent paths and space exploration projections.
+
 - **Video games & simulations:** Creating realistic physics-based animations.
 
 ## 5. Limitations and Future Considerations
@@ -112,11 +115,9 @@ While the idealized model provides valuable insights, real-world conditions intr
 **Wind effects:** External forces can influence trajectory, making real-world predictions more complex.
 
 ### 5.1  Future Improvements
-Incorporate **air resistance** to analyze realistic projectile motion. 
-
-Extend the model to **uneven terrains** with different elevations.
-
-Introduce **spin effects** to study Magnus forces in sports applications.
+- Incorporate **air resistance** to analyze realistic projectile motion. 
+- Extend the model to **uneven terrains** with different elevations.
+- Introduce **spin effects** to study Magnus forces in sports applications.
 
 ## 6. Conclusion
 
