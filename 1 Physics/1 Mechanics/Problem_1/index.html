@@ -238,6 +238,8 @@ $$ \theta = 45^\circ $$, meaning angles equidistant from 45° yield the same ran
 <h2 id="3-implementation">3. Implementation</h2>
 <p>Below is a Python script to compute and visualize the range as a function of the projection angle.</p>
 <pre><code class="language-python">
+import numpy as np
+
 def projectile_range(theta, v0, g=9.81):
     """
     Computes the range of a projectile given the launch angle (theta),
@@ -252,6 +254,9 @@ theta_values = np.linspace(0, 90, 100)  # Angle range from 0 to 90 degrees
 ranges = [projectile_range(theta, v0) for theta in theta_values]
 
 # Plotting
+# Assuming 'plt' refers to matplotlib.pyplot, import it:
+import matplotlib.pyplot as plt # Importing matplotlib to enable plotting functionality.
+
 plt.figure(figsize=(10, 5))
 plt.plot(theta_values, ranges, label=f'Initial Velocity = {v0} m/s')
 plt.xlabel('Angle of Projection (degrees)')
@@ -269,16 +274,14 @@ plt.show()
 - <strong>Video games &amp; simulations:</strong> Creating realistic physics-based animations.</p>
 <h2 id="5-limitations-and-future-considerations">5. Limitations and Future Considerations</h2>
 <p>While the idealized model provides valuable insights, real-world conditions introduce additional complexities:
-- <strong>Air resistance:</strong> The presence of drag significantly reduces range and modifies the optimal launch angle.
-- <strong>Varying gravity:</strong> On planets with different gravitational strengths, the projectile behavior changes accordingly.
-- <strong>Uneven terrain:</strong> A non-level landing surface alters the computed range.
-- <strong>Wind effects:</strong> External forces can influence trajectory, making real-world predictions more complex.</p>
+<strong>Air resistance:</strong> The presence of drag significantly reduces range and modifies the optimal launch angle.
+<strong>Varying gravity:</strong> On planets with different gravitational strengths, the projectile behavior changes accordingly.
+<strong>Uneven terrain:</strong> A non-level landing surface alters the computed range.
+<strong>Wind effects:</strong> External forces can influence trajectory, making real-world predictions more complex.</p>
 <h3 id="51-future-improvements">5.1  Future Improvements</h3>
-<ul>
-<li>Incorporate <strong>air resistance</strong> to analyze realistic projectile motion.</li>
-<li>Extend the model to <strong>uneven terrains</strong> with different elevations.</li>
-<li>Introduce <strong>spin effects</strong> to study Magnus forces in sports applications.</li>
-</ul>
+<p>Incorporate <strong>air resistance</strong> to analyze realistic projectile motion. </p>
+<p>Extend the model to <strong>uneven terrains</strong> with different elevations.</p>
+<p>Introduce <strong>spin effects</strong> to study Magnus forces in sports applications.</p>
 <h2 id="6-conclusion">6. Conclusion</h2>
 <p>This study demonstrates the dependence of projectile range on the angle of projection, with a clear maximum occurring at 45 degrees. The derived mathematical framework provides a fundamental understanding of projectile motion, while the implemented Python simulation offers a visual and computational verification of these principles. </p>
 <p>However, real-world deviations from this model highlight the importance of considering external forces such as air resistance and wind. Future studies incorporating these factors will provide more accurate and applicable results for various scientific and engineering domains. Understanding projectile motion remains crucial for fields ranging from sports science to aerospace engineering, emphasizing the enduring relevance of classical physics in modern applications.</p>
