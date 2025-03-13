@@ -98,6 +98,7 @@ plt.show()
 ## 4.  Practical Applications
 
 Projectile motion is fundamental in many real-world applications, including:
+
 - **Sports physics:** Determining optimal angles for maximum distance in soccer, golf, or javelin throws.
 
 - **Engineering:** Designing artillery, missile trajectories, and launch mechanisms.
