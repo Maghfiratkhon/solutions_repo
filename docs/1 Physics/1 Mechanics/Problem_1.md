@@ -11,14 +11,11 @@ R = \frac{v_0^2 \sin(2\theta)}{g}
 $$
 
 where:
-- $$ R $$
- is the horizontal range,
-- $$ v_0 $$
-is the initial velocity,
-- $$ \theta $$ 
-is the angle of projection,
-- $$ g $$
- is the gravitational acceleration (9.81 m/s² on Earth).
+
+- $R$ is the horizontal range,
+- $v_0$ is the initial velocity,
+- $\theta$ is the angle of projection,
+- $g$ is the gravitational acceleration (9.81 m/s² on Earth).
 
 ### 1.2 Derivation of the Range Equation
 
