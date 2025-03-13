@@ -67,6 +67,8 @@ Below is a Python script to compute and visualize the range as a function of the
 
 ```python
 
+import numpy as np
+
 def projectile_range(theta, v0, g=9.81):
     """
     Computes the range of a projectile given the launch angle (theta),
@@ -81,6 +83,9 @@ theta_values = np.linspace(0, 90, 100)  # Angle range from 0 to 90 degrees
 ranges = [projectile_range(theta, v0) for theta in theta_values]
 
 # Plotting
+# Assuming 'plt' refers to matplotlib.pyplot, import it:
+import matplotlib.pyplot as plt # Importing matplotlib to enable plotting functionality.
+
 plt.figure(figsize=(10, 5))
 plt.plot(theta_values, ranges, label=f'Initial Velocity = {v0} m/s')
 plt.xlabel('Angle of Projection (degrees)')
@@ -101,15 +106,17 @@ Projectile motion is fundamental in many real-world applications, including:
 ## 5. Limitations and Future Considerations
 
 While the idealized model provides valuable insights, real-world conditions introduce additional complexities:
-- **Air resistance:** The presence of drag significantly reduces range and modifies the optimal launch angle.
-- **Varying gravity:** On planets with different gravitational strengths, the projectile behavior changes accordingly.
-- **Uneven terrain:** A non-level landing surface alters the computed range.
-- **Wind effects:** External forces can influence trajectory, making real-world predictions more complex.
+**Air resistance:** The presence of drag significantly reduces range and modifies the optimal launch angle.
+**Varying gravity:** On planets with different gravitational strengths, the projectile behavior changes accordingly.
+**Uneven terrain:** A non-level landing surface alters the computed range.
+**Wind effects:** External forces can influence trajectory, making real-world predictions more complex.
 
 ### 5.1  Future Improvements
-- Incorporate **air resistance** to analyze realistic projectile motion.
-- Extend the model to **uneven terrains** with different elevations.
-- Introduce **spin effects** to study Magnus forces in sports applications.
+Incorporate **air resistance** to analyze realistic projectile motion. 
+
+Extend the model to **uneven terrains** with different elevations.
+
+Introduce **spin effects** to study Magnus forces in sports applications.
 
 ## 6. Conclusion
 
