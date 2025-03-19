@@ -1,5 +1,149 @@
 # Problem 1
-# Continuation: Orbital Period and Orbital Radius
+# Orbital Period and Orbital Radius
+
+## 1. Introduction
+
+Kepler’s Third Law of planetary motion is one of the fundamental principles in celestial mechanics. It establishes a direct relationship between the square of the orbital period $T$ and the cube of the orbital radius $r$ for an object in a circular orbit. This law allows us to calculate planetary motions and their gravitational interactions, providing insight into the fundamental structure of planetary systems, including satellite orbits and the Moon's orbit around Earth.
+
+This document provides a detailed derivation of the relationship between orbital period and orbital radius, followed by an exploration of its implications for astronomy and real-world examples, including simulations of orbital motions.
+
+## 2. Kepler’s Third Law Derivation
+
+For an object in a circular orbit, the orbital period $T$ is related to the gravitational force that acts on it. Let’s derive the relationship step by step:
+
+### 2.1. Centripetal Force and Gravitational Force
+
+An object moving in a circular orbit is kept in motion by the gravitational force, which also provides the centripetal force. 
+
+The gravitational force between two objects of masses $M$ (central body, e.g., the Sun or Earth) and $m$ (orbiting body, e.g., a planet or satellite) is given by:
+
+$$
+F_{\text{gravity}} = \frac{GMm}{r^2}
+$$
+
+Where:
+- $G$ is the gravitational constant
+- $M$ is the mass of the central body (e.g., the Sun, Earth)
+- $m$ is the mass of the orbiting body
+- $r$ is the orbital radius (the distance between the two objects)
+
+The centripetal force required to keep the orbiting body in a circular path is:
+
+$$
+F_{\text{centripetal}} = \frac{mv^2}{r}
+$$
+
+Where:
+- $v$ is the orbital velocity of the body.
+
+Since these two forces must balance, we set them equal:
+
+$$
+\frac{GMm}{r^2} = \frac{mv^2}{r}
+$$
+
+### 2.2. Solving for Orbital Velocity
+
+Canceling the mass $m$ from both sides, we get:
+
+$$
+\frac{GM}{r^2} = \frac{v^2}{r}
+$$
+
+Multiplying both sides by $r$:
+
+$$
+\frac{GM}{r} = v^2
+$$
+
+Now, solve for $v$:
+
+$$
+v = \sqrt{\frac{GM}{r}}
+$$
+
+### 2.3. Orbital Period and Velocity
+
+The orbital period $T$ is the time it takes for the object to complete one full orbit. The distance traveled in one orbit is the circumference of the orbit:
+
+$$
+\text{Circumference} = 2\pi r
+$$
+
+Since velocity is distance divided by time, we can write:
+
+$$
+v = \frac{2\pi r}{T}
+$$
+
+### 2.4. Substituting for $v$
+
+We now have two equations for $v$:
+
+1. $v = \sqrt{\frac{GM}{r}}$
+2. $v = \frac{2\pi r}{T}$
+
+Equating these two expressions for $v$:
+
+$$
+\sqrt{\frac{GM}{r}} = \frac{2\pi r}{T}
+$$
+
+### 2.5. Solving for $T$
+
+Square both sides to eliminate the square root:
+
+$$
+\frac{GM}{r} = \left(\frac{2\pi r}{T}\right)^2
+$$
+
+Simplify the right-hand side:
+
+$$
+\frac{GM}{r} = \frac{4\pi^2 r^2}{T^2}
+$$
+
+Rearrange to solve for $T^2$:
+
+$$
+T^2 = \frac{4\pi^2 r^3}{GM}
+$$
+
+### 2.6. Kepler's Third Law
+
+Thus, we derive the relationship between the orbital period $T$ and the orbital radius $r$:
+
+$$
+T^2 \propto r^3
+$$
+
+This is Kepler’s Third Law, which states that the square of the orbital period is proportional to the cube of the orbital radius. This relationship holds for circular orbits.
+
+## 3. Implications for Astronomy
+
+### 3.1. Calculating Planetary Masses
+
+Kepler’s Third Law allows astronomers to estimate the mass of celestial bodies. For example, if we know the orbital period and radius of a satellite or planet, we can rearrange Kepler’s Third Law to solve for the mass of the central body:
+
+$$
+M = \frac{4\pi^2 r^3}{G T^2}
+$$
+
+This formula is useful in determining the mass of distant stars, planets, and moons, especially when direct measurements of mass are difficult to obtain.
+
+### 3.2. Estimating Planetary Distances
+
+The law also helps estimate the distance between celestial bodies. For example, knowing the orbital period of a moon or planet and the mass of the central body (such as Earth or the Sun), we can compute the orbital radius.
+
+## 4. Real-World Examples
+
+### 4.1. The Moon's Orbit Around Earth
+
+The Moon orbits Earth with a period of about 27.3 days and a radius of about 384,400 km. Using Kepler’s Third Law, we can check the relationship between the Moon's orbital period and radius.
+
+### 4.2. The Planets in the Solar System
+
+Kepler’s Third Law applies not only to moons and satellites but also to the planets of the Solar System. For example, the orbital period of Earth is about 365 days, and its orbital radius is about 149.6 million km. By applying the relationship, we can estimate orbital periods and distances for other planets.
 
 ## 5. Computational Model to Simulate Circular Orbits
 
@@ -43,6 +187,7 @@ r_cubed = r**3
 print(f"T^2: {T_squared:.2e} s^2")
 print(f"r^3: {r_cubed:.2e} m^3")
 ```
+
 
 
 ## 5.1. Orbit Simulation
