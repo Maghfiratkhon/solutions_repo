@@ -64,7 +64,7 @@ $$
 
 ### 1.2.3 Resonance Condition
 
-Resonance occurs when the driving frequency $ \omega $ is close to the natural frequency $ \omega_0 $, causing an increase in amplitude:
+Resonance occurs when the driving frequency $\omega$ is close to the natural frequency $\omega_0$, causing an increase in amplitude:
 
 $$
 B = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (\gamma\omega)^2}}
