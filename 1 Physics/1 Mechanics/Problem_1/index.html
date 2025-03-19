@@ -206,18 +206,18 @@ R = \frac{v_0^2 \sin(2\theta)}{g}
 <li><span class="arithmatex">\(g\)</span> is the gravitational acceleration (9.81 m/s² on Earth).</li>
 </ul>
 <h3 id="12-derivation-of-the-range-equation">1.2 Derivation of the Range Equation</h3>
-<p>The horizontal and vertical displacements of the projectile as a function of time <span class="arithmatex">\(t\)</span> are:</p>
+<p>The horizontal and vertical displacements of the projectile as a function of time (<span class="arithmatex">\(t\)</span>) are:</p>
 <div class="arithmatex">\[
  x = v_0 \cos(\theta) t,
 \]</div>
 <div class="arithmatex">\[
  y = v_0 \sin(\theta) t - \frac{1}{2} g t^2.
 \]</div>
-<p>The total time of flight <span class="arithmatex">\(T\)</span> is found by setting <span class="arithmatex">\(y=0\)</span> and solving for <span class="arithmatex">\(t\)</span>:</p>
+<p>The total time of flight (<span class="arithmatex">\(T\)</span>) is found by setting (<span class="arithmatex">\(y=0\)</span>) and solving for (<span class="arithmatex">\(t\)</span>):</p>
 <div class="arithmatex">\[
 T = \frac{2 v_0 \sin(\theta)}{g}.
 \]</div>
-<p>Since the projectile lands back at its original height, we substitute <span class="arithmatex">\(T\)</span> into the horizontal displacement equation to obtain:</p>
+<p>Since the projectile lands back at its original height, we substitute (<span class="arithmatex">\(T\)</span>) into the horizontal displacement equation to obtain:</p>
 <div class="arithmatex">\[
 R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}.
 \]</div>
@@ -228,12 +228,20 @@ $$ 2 \sin(\theta) \cos(\theta) = \sin(2\theta) $$
 R = \frac{v_0^2 \sin(2\theta)}{g}.
 \]</div>
 <h2 id="2-analysis-of-the-range">2. Analysis of the Range</h2>
-<p>The range is a function of the projection angle and initial velocity. Notably:
-- The maximum range occurs at 
-$$ \theta = 45^\circ $$.
-- The range is symmetric about 
-$$ \theta = 45^\circ $$, meaning angles equidistant from 45° yield the same range (e.g., 30° and 60°).
-- Increasing <span class="arithmatex">\(v_0\)</span> results in a quadratic increase in range, while an increase in <span class="arithmatex">\(g\)</span> reduces the range.</p>
+<p>The range is a function of the projection angle and initial velocity. Notably:</p>
+<ul>
+<li>
+<p>The maximum range occurs at 
+$$ \theta = 45^\circ $$.</p>
+</li>
+<li>
+<p>The range is symmetric about 
+$$ \theta = 45^\circ $$, meaning angles equidistant from 45° yield the same range (e.g., 30° and 60°).</p>
+</li>
+<li>
+<p>Increasing <span class="arithmatex">\(v_0\)</span> results in a quadratic increase in range, while an increase in <span class="arithmatex">\(g\)</span> reduces the range.</p>
+</li>
+</ul>
 <p>Additionally, in practical situations where air resistance exists, the theoretical prediction may differ from actual results, making real-world considerations essential.</p>
 <h2 id="3-implementation">3. Implementation</h2>
 <p>Below is a Python script to compute and visualize the range as a function of the projection angle.</p>
