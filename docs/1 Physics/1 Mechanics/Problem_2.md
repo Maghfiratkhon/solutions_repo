@@ -19,23 +19,24 @@ $$
 
 where:
 
-- $ \theta $ is the angular displacement.  
+- $\theta$ is the angular displacement.  
 
-- $ \gamma $ is the damping coefficient.  
+- $\gamma$ is the damping coefficient.  
 
-- $ \omega_0 = \sqrt{\frac{g}{L}} $ is the natural frequency of the pendulum.  
+- $\omega_0 = \sqrt{\frac{g}{L}}$ 
+is the natural frequency of the pendulum.  
 
-- $ A $ is the amplitude of the external driving force.  
+- $A$ is the amplitude of the external driving force.  
 
-- $ \omega $ is the driving frequency.  
+- $\omega$ is the driving frequency.  
 
-- $ g $ is the acceleration due to gravity.  
+- $g$ is the acceleration due to gravity.  
 
-- $ L $ is the length of the pendulum.  
+- $L$ is the length of the pendulum.  
 
 ### 1.2.2 Small-Angle Approximation
 
-For small angles ($ \theta \approx \sin\theta $), the equation simplifies to:
+For small angles ($\theta \approx \sin\theta$), the equation simplifies to:
 
 $$
 \frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
@@ -47,13 +48,13 @@ This is a linear nonhomogeneous differential equation, which can be solved using
    $$
    \theta_h (t) = e^{-\frac{\gamma}{2}t} \left(C_1 \cos(\omega_d t) + C_2 \sin(\omega_d t) \right)
    $$
-   where $ \omega_d = \sqrt{\omega_0^2 - \frac{\gamma^2}{4}} $ is the damped natural frequency.  
+   where $\omega_d = \sqrt{\omega_0^2 - \frac{\gamma^2}{4}}$ is the damped natural frequency.  
 
 2. **Particular Solution (Steady-State Response):**
    $$
    \theta_p (t) = B \cos(\omega t - \phi)
    $$
-   where $ B $ and $ \phi $ depend on $ \gamma, \omega_0, A, $ and $ \omega $.  
+   where $B$ and $\phi$ depend on $\gamma, \omega_0, A,$ and $\omega$.  
 
 The complete solution is:
 
@@ -81,15 +82,15 @@ $$
 
 ### 2.1 Influence of System Parameters
 
-- **Damping Coefficient ($ \gamma $)**: Higher damping suppresses oscillations and prevents chaotic motion.  
+- **Damping Coefficient ($\gamma$)**: Higher damping suppresses oscillations and prevents chaotic motion.  
 
-- **Driving Amplitude ($ A $)**: A higher driving force can lead to large oscillations and chaotic behavior.  
+- **Driving Amplitude ($A$)**: A higher driving force can lead to large oscillations and chaotic behavior.  
 
-- **Driving Frequency ($ \omega $)**: Near resonance, the system exhibits significant amplitude growth.  
+- **Driving Frequency ($\omega$)**: Near resonance, the system exhibits significant amplitude growth.  
 
 ### 2.2  Transition to Chaos
 
-For large angles, the nonlinearity of $ \sin\theta $ introduces chaotic behavior. The transition from periodic to chaotic motion can be observed using phase portraits and Poincaré sections.  
+For large angles, the nonlinearity of $\sin\theta$ introduces chaotic behavior. The transition from periodic to chaotic motion can be observed using phase portraits and Poincaré sections.  
 
 ---
 
