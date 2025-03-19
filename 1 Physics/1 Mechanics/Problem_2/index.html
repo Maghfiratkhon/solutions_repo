@@ -185,29 +185,30 @@
 <p>where:</p>
 <ul>
 <li>
-<p>$ \theta $ is the angular displacement.  </p>
+<p><span class="arithmatex">\(\theta\)</span> is the angular displacement.  </p>
 </li>
 <li>
-<p>$ \gamma $ is the damping coefficient.  </p>
+<p><span class="arithmatex">\(\gamma\)</span> is the damping coefficient.  </p>
 </li>
 <li>
-<p>$ \omega_0 = \sqrt{\frac{g}{L}} $ is the natural frequency of the pendulum.  </p>
+<p><span class="arithmatex">\(\omega_0 = \sqrt{\frac{g}{L}}\)</span> 
+is the natural frequency of the pendulum.  </p>
 </li>
 <li>
-<p>$ A $ is the amplitude of the external driving force.  </p>
+<p><span class="arithmatex">\(A\)</span> is the amplitude of the external driving force.  </p>
 </li>
 <li>
-<p>$ \omega $ is the driving frequency.  </p>
+<p><span class="arithmatex">\(\omega\)</span> is the driving frequency.  </p>
 </li>
 <li>
-<p>$ g $ is the acceleration due to gravity.  </p>
+<p><span class="arithmatex">\(g\)</span> is the acceleration due to gravity.  </p>
 </li>
 <li>
-<p>$ L $ is the length of the pendulum.  </p>
+<p><span class="arithmatex">\(L\)</span> is the length of the pendulum.  </p>
 </li>
 </ul>
 <h3 id="122-small-angle-approximation">1.2.2 Small-Angle Approximation</h3>
-<p>For small angles ($ \theta \approx \sin\theta $), the equation simplifies to:</p>
+<p>For small angles (<span class="arithmatex">\(\theta \approx \sin\theta\)</span>), the equation simplifies to:</p>
 <div class="arithmatex">\[
 \frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
 \]</div>
@@ -218,14 +219,14 @@
    $$
    \theta_h (t) = e^{-\frac{\gamma}{2}t} \left(C_1 \cos(\omega_d t) + C_2 \sin(\omega_d t) \right)
    $$
-   where $ \omega_d = \sqrt{\omega_0^2 - \frac{\gamma^2}{4}} $ is the damped natural frequency.  </p>
+   where <span class="arithmatex">\(\omega_d = \sqrt{\omega_0^2 - \frac{\gamma^2}{4}}\)</span> is the damped natural frequency.  </p>
 </li>
 <li>
 <p><strong>Particular Solution (Steady-State Response):</strong>
    $$
    \theta_p (t) = B \cos(\omega t - \phi)
    $$
-   where $ B $ and $ \phi $ depend on $ \gamma, \omega_0, A, $ and $ \omega $.  </p>
+   where <span class="arithmatex">\(B\)</span> and <span class="arithmatex">\(\phi\)</span> depend on <span class="arithmatex">\(\gamma, \omega_0, A,\)</span> and <span class="arithmatex">\(\omega\)</span>.  </p>
 </li>
 </ol>
 <p>The complete solution is:</p>
@@ -246,17 +247,17 @@ B = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (\gamma\omega)^2}}
 <h3 id="21-influence-of-system-parameters">2.1 Influence of System Parameters</h3>
 <ul>
 <li>
-<p><strong>Damping Coefficient ($ \gamma $)</strong>: Higher damping suppresses oscillations and prevents chaotic motion.  </p>
+<p><strong>Damping Coefficient (<span class="arithmatex">\(\gamma\)</span>)</strong>: Higher damping suppresses oscillations and prevents chaotic motion.  </p>
 </li>
 <li>
-<p><strong>Driving Amplitude ($ A $)</strong>: A higher driving force can lead to large oscillations and chaotic behavior.  </p>
+<p><strong>Driving Amplitude (<span class="arithmatex">\(A\)</span>)</strong>: A higher driving force can lead to large oscillations and chaotic behavior.  </p>
 </li>
 <li>
-<p><strong>Driving Frequency ($ \omega $)</strong>: Near resonance, the system exhibits significant amplitude growth.  </p>
+<p><strong>Driving Frequency (<span class="arithmatex">\(\omega\)</span>)</strong>: Near resonance, the system exhibits significant amplitude growth.  </p>
 </li>
 </ul>
 <h3 id="22-transition-to-chaos">2.2  Transition to Chaos</h3>
-<p>For large angles, the nonlinearity of $ \sin\theta $ introduces chaotic behavior. The transition from periodic to chaotic motion can be observed using phase portraits and Poincaré sections.  </p>
+<p>For large angles, the nonlinearity of <span class="arithmatex">\(\sin\theta\)</span> introduces chaotic behavior. The transition from periodic to chaotic motion can be observed using phase portraits and Poincaré sections.  </p>
 <hr/>
 <h2 id="3-practical-applications">3. Practical Applications</h2>
 <p>The forced damped pendulum model applies to:  </p>
