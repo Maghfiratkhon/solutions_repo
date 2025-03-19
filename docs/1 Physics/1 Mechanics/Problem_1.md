@@ -19,7 +19,7 @@ where:
 
 ### 1.2 Derivation of the Range Equation
 
-The horizontal and vertical displacements of the projectile as a function of time \(t\) are:
+The horizontal and vertical displacements of the projectile as a function of time ($t$) are:
 
 $$
  x = v_0 \cos(\theta) t,
@@ -30,13 +30,13 @@ $$
  y = v_0 \sin(\theta) t - \frac{1}{2} g t^2.
 $$
 
-The total time of flight \(T\) is found by setting \(y=0\) and solving for \(t\):
+The total time of flight ($T$) is found by setting ($y=0$) and solving for ($t$):
 
 $$
 T = \frac{2 v_0 \sin(\theta)}{g}.
 $$
 
-Since the projectile lands back at its original height, we substitute \(T\) into the horizontal displacement equation to obtain:
+Since the projectile lands back at its original height, we substitute ($T$) into the horizontal displacement equation to obtain:
 
 $$
 R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}.
@@ -53,10 +53,13 @@ $$
 ## 2. Analysis of the Range
 
 The range is a function of the projection angle and initial velocity. Notably:
+
 - The maximum range occurs at 
 $$ \theta = 45^\circ $$.
+
 - The range is symmetric about 
 $$ \theta = 45^\circ $$, meaning angles equidistant from 45° yield the same range (e.g., 30° and 60°).
+
 - Increasing \(v_0\) results in a quadratic increase in range, while an increase in \(g\) reduces the range.
 
 Additionally, in practical situations where air resistance exists, the theoretical prediction may differ from actual results, making real-world considerations essential.
