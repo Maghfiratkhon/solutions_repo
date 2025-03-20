@@ -88,16 +88,8 @@ ranges = [projectile_range(theta, v0) for theta in theta_values]
 # Assuming 'plt' refers to matplotlib.pyplot, import it:
 import matplotlib.pyplot as plt # Importing matplotlib to enable plotting functionality.
 
-plt.figure(figsize=(10, 5))
-plt.plot(theta_values, ranges, label=f'Initial Velocity = {v0} m/s')
-plt.xlabel('Angle of Projection (degrees)')
-plt.ylabel('Range (meters)')
-plt.title('Projectile Range as a Function of Angle of Projection')
-plt.legend()
-plt.grid()
-plt.show()
-```
-## 4.  Practical Applications
+![image](https://github.com/user-attachments/assets/36de6d73-025f-475b-87e8-98a038a8bc36)
+
 
 Projectile motion is fundamental in many real-world applications, including:
 
