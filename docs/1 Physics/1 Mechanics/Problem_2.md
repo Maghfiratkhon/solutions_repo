@@ -147,6 +147,9 @@ plt.grid()
 plt.show()
 ```
 
+![image](https://github.com/user-attachments/assets/ac67f786-1c20-4a30-ae46-239a8a06c2a2)
+
+
 ## 5. Additional Notes on the Forced Damped Pendulum
 
 ## 5.1 Further Considerations
