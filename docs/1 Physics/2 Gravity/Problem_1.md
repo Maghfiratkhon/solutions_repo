@@ -34,6 +34,7 @@ F_{\text{centripetal}} = \frac{mv^2}{r}
 $$
 
 Where:
+
 - $v$ is the orbital velocity of the body.
 
 Since these two forces must balance, we set them equal:
