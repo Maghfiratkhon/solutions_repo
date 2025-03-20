@@ -188,6 +188,7 @@ r_cubed = r**3
 print(f"T^2: {T_squared:.2e} s^2")
 print(f"r^3: {r_cubed:.2e} m^3")
 ```
+![image](https://github.com/user-attachments/assets/8ab4dc50-893b-48c4-ac8b-e7ce8e9410ad)
 
 
 
