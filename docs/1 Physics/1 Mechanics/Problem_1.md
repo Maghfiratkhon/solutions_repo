@@ -68,25 +68,43 @@ Additionally, in practical situations where air resistance exists, the theoretic
 Below is a Python script to compute and visualize the range as a function of the projection angle.
 
 ```python
-
 import numpy as np
+import matplotlib.pyplot as plt
 
-def projectile_range(theta, v0, g=9.81):
+# Constants
+g = 9.81  # Gravitational acceleration (m/s^2)
+v0 = 20   # Initial velocity (m/s)
+theta_range = np.linspace(0, 90, 100)  # Angles in degrees
+
+# Function to calculate range
+def projectile_range(v0, theta, g=9.81):
     """
-    Computes the range of a projectile given the launch angle (theta),
-    initial velocity (v0), and gravitational acceleration (g).
+    Computes the range of a projectile for a given initial velocity and angle.
+    
+    Parameters:
+    v0 : float - Initial velocity (m/s)
+    theta : float - Launch angle (degrees)
+    g : float - Gravitational acceleration (default = 9.81 m/s^2)
+    
+    Returns:
+    float - The computed range of the projectile
     """
-    theta_rad = np.radians(theta)
-    return (v0**2 * np.sin(2 * theta_rad)) / g
+    theta_rad = np.radians(theta)  # Convert angle to radians
+    return (v0**2 * np.sin(2 * theta_rad)) / g  # Range formula
 
-# Parameters
-v0 = 50  # Initial velocity in m/s
-theta_values = np.linspace(0, 90, 100)  # Angle range from 0 to 90 degrees
-ranges = [projectile_range(theta, v0) for theta in theta_values]
+# Compute ranges for different angles
+ranges = projectile_range(v0, theta_range, g)
 
-# Plotting
-# Assuming 'plt' refers to matplotlib.pyplot, import it:
-import matplotlib.pyplot as plt # Importing matplotlib to enable plotting functionality.
+# Plot results
+plt.figure(figsize=(8, 5))
+plt.plot(theta_range, ranges, label=f'Initial Velocity = {v0} m/s', color='b')
+plt.xlabel("Angle of Projection (degrees)", fontsize=12)
+plt.ylabel("Range (meters)", fontsize=12)
+plt.title("Projectile Range as a Function of Angle of Projection", fontsize=14)
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()
+```
 
 ![image](https://github.com/user-attachments/assets/36de6d73-025f-475b-87e8-98a038a8bc36)
 
