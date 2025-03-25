@@ -126,7 +126,7 @@ plt.xlabel('X Position (m)')
 plt.ylabel('Y Position (m)')
 plt.show()
 ```
-
+![image](https://github.com/user-attachments/assets/99aa2f8b-9c47-41d1-b3fc-ffe6936c51fb)
 
 ## 5.1 Explanation of the Code
 
