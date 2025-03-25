@@ -163,7 +163,7 @@ simulate_clt(binom_pop, "Binomial Distribution")
 
 - The variance of the sampling distribution is $\sigma^2/n$, where $\sigma^2$ is the population variance.
 
-- Exponential (high variance, 1) shows a wider spread than Uniform (low variance, 0.083), even at the same $ n $.
+- Exponential (high variance, 1) shows a wider spread than Uniform (low variance, 0.083), even at the same $n$.
 
 ## 1.6 Practical Applications
 
