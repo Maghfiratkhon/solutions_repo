@@ -113,6 +113,7 @@ plt.title('Trajectory of a Freely Released Payload Near Earth')
 plt.grid()
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/4f0ea382-a7c1-4a43-b347-8e881b1c021b)
 
 # 5. Discussion and Conclusion
 
