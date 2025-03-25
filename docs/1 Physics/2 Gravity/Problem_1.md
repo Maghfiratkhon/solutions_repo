@@ -22,9 +22,13 @@ F_{\text{gravity}} = \frac{GMm}{r^2}
 $$
 
 Where:
+
 - $G$ is the gravitational constant
+  
 - $M$ is the mass of the central body (e.g., the Sun, Earth)
+  
 - $m$ is the mass of the orbiting body
+  
 - $r$ is the orbital radius (the distance between the two objects)
 
 The centripetal force required to keep the orbiting body in a circular path is:
