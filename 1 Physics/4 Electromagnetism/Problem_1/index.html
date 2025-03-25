@@ -219,54 +219,92 @@
 <h3 id="23-python-code">2.3 Python Code</h3>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
-from scipy.constants import e, m
+from mpl_toolkits.mplot3d import Axes3D
 
-# Function to compute the Lorentz force
-def lorentz_force(q, m, E, B, v):
-    return q * (E + np.cross(v, B))
+# Constants
+q = 1.6e-19  # Charge (Coulombs, e.g., electron)
+m = 9.1e-31  # Mass (kg, e.g., electron)
+dt = 1e-9    # Time step (s)
 
-# Function to update the position and velocity of the particle using Euler's method
-def update_position_velocity(r, v, q, m, E, B, dt):
-    F = lorentz_force(q, m, E, B, v)
-    a = F / m  # Acceleration
-    r_new = r + v * dt  # New position
-    v_new = v + a * dt  # New velocity
+# Lorentz force function: F = q(E + v x B)
+def lorentz_force(r, v, E, B):
+    F = q * (E + np.cross(v, B))
+    return F / m  # Acceleration (F = ma)
+
+# RK4 solver for position and velocity
+def rk4_step(r, v, E, B):
+    # Position update
+    k1_r = v
+    k1_v = lorentz_force(r, v, E, B)
+
+    k2_r = v + 0.5 * dt * k1_v
+    k2_v = lorentz_force(r + 0.5 * dt * k1_r, v + 0.5 * dt * k1_v, E, B)
+
+    k3_r = v + 0.5 * dt * k2_v
+    k3_v = lorentz_force(r + 0.5 * dt * k2_r, v + 0.5 * dt * k2_v, E, B)
+
+    k4_r = v + dt * k3_v
+    k4_v = lorentz_force(r + dt * k3_r, v + dt * k3_v, E, B)
+
+    r_new = r + (dt / 6.0) * (k1_r + 2 * k2_r + 2 * k3_r + k4_r)
+    v_new = v + (dt / 6.0) * (k1_v + 2 * k2_v + 2 * k3_v + k4_v)
     return r_new, v_new
 
-# Initial conditions and constants
-q = e  # Charge of the particle (electron charge)
-m = 9.11e-31  # Mass of the particle (electron mass)
-v0 = np.array([1e5, 0, 0])  # Initial velocity (m/s)
-r0 = np.array([0, 0, 0])  # Initial position (m)
-B = np.array([0, 0, 1])  # Magnetic field (Tesla)
-E = np.array([0, 0, 0])  # Electric field (V/m) - set to 0 for magnetic only case
-dt = 1e-9  # Time step (s)
-num_steps = 1000  # Number of simulation steps
+# Simulation function
+def simulate_trajectory(r0, v0, E, B, t_max):
+    r = np.array(r0, dtype=float)
+    v = np.array(v0, dtype=float)
+    positions = [r.copy()]
+    velocities = [v.copy()]
+    t = 0
 
-# Arrays to store the trajectory
-r_values = [r0]
-v_values = [v0]
+    while t &lt; t_max:
+        r, v = rk4_step(r, v, E, B)
+        positions.append(r.copy())
+        velocities.append(v.copy())
+        t += dt
 
-# Simulate the particle's motion
-r = r0
-v = v0
-for _ in range(num_steps):
-    r, v = update_position_velocity(r, v, q, m, E, B, dt)
-    r_values.append(r)
-    v_values.append(v)
+    return np.array(positions), np.array(velocities)
 
-# Convert the trajectory to numpy arrays
-r_values = np.array(r_values)
+# Plotting function
+def plot_trajectory(positions, title, is_3d=True):
+    if is_3d:
+        fig = plt.figure(figsize=(8, 6))
+        ax = fig.add_subplot(111, projection='3d')
+        ax.plot(positions[:, 0], positions[:, 1], positions[:, 2])
+        ax.set_xlabel('X (m)')
+        ax.set_ylabel('Y (m)')
+        ax.set_zlabel('Z (m)')
+    else:
+        plt.figure(figsize=(8, 6))
+        plt.plot(positions[:, 0], positions[:, 1])
+        plt.xlabel('X (m)')
+        plt.ylabel('Y (m)')
+    plt.title(title)
+    plt.grid(True)
+    plt.show()
 
-# Plot the trajectory in 3D space
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(r_values[:, 0], r_values[:, 1], r_values[:, 2])
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Z')
-ax.set_title("Particle Trajectory in Magnetic Field")
-plt.show()
+# Case 1: Uniform Magnetic Field (B along z-axis)
+B = np.array([0, 0, 1.0])  # Tesla
+E = np.array([0, 0, 0])    # V/m
+r0 = [0, 0, 0]             # Initial position
+v0 = [1e5, 0, 0]          # Initial velocity (m/s)
+t_max = 1e-7               # Simulation time (s)
+
+pos, vel = simulate_trajectory(r0, v0, E, B, t_max)
+plot_trajectory(pos, "Uniform Magnetic Field (Circular Motion)")
+
+# Case 2: Combined Electric and Magnetic Fields
+E = np.array([0, 1e5, 0])  # Electric field in y-direction
+pos, vel = simulate_trajectory(r0, v0, E, B, t_max)
+plot_trajectory(pos, "Combined E and B Fields (Helical Motion)")
+
+# Case 3: Crossed Fields (E perpendicular to B)
+E = np.array([0, 1e5, 0])  # E in y-direction
+B = np.array([0, 0, 1.0])  # B in z-direction
+v0 = [1e5, 0, 0]          # Velocity in x-direction
+pos, vel = simulate_trajectory(r0, v0, E, B, t_max)
+plot_trajectory(pos, "Crossed E and B Fields (Drift Motion)")
 </code></pre>
 <h2 id="24-explanation-of-the-code">2.4 Explanation of the Code</h2>
 <ul>
