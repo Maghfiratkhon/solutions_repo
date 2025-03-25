@@ -172,177 +172,175 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<h1 id="equivalent-resistance-using-graph-theory">Equivalent Resistance Using Graph Theory</h1>
+<h1 id="simulating-the-effects-of-the-lorentz-force">Simulating the Effects of the Lorentz Force</h1>
 <h2 id="1-motivation">1. Motivation</h2>
-<p>Calculating equivalent resistance is a fundamental problem in electrical circuits, crucial for understanding and designing efficient systems. Traditional methods rely on iteratively applying series and parallel resistor rules, which become cumbersome for complex circuits. Graph theory provides an elegant solution to analyze and simplify circuits algorithmically.</p>
-<p>By representing a circuit as a graph—where nodes correspond to junctions and edges represent resistors with weights equal to their resistance values—we can systematically simplify even intricate networks. This method enables efficient calculations and opens doors to automated analysis, making it especially useful for circuit simulation software, optimization problems, and network design.</p>
-<p>In this document, we will explore how graph theory can be leveraged to calculate equivalent resistance, demonstrating its significance in both theoretical and practical applications across physics, engineering, and computer science.</p>
-<hr/>
-<h2 id="2-task-algorithm-for-calculating-equivalent-resistance">2. Task: Algorithm for Calculating Equivalent Resistance</h2>
-<h3 id="21-series-and-parallel-connections-in-graph-theory">2.1 Series and Parallel Connections in Graph Theory</h3>
-<p>Before diving into the algorithm, let’s quickly review the concepts of series and parallel resistances:</p>
+<p>The Lorentz force is a crucial concept in physics that governs the motion of charged particles in electric and magnetic fields. Mathematically, the Lorentz force is given by:</p>
+<div class="arithmatex">\[
+\mathbf{F} = q (\mathbf{E} + \mathbf{v} \times \mathbf{B})
+\]</div>
+<p>where:
+- <span class="arithmatex">\(\mathbf{F}\)</span> is the force acting on a particle,
+- <span class="arithmatex">\(q\)</span> is the charge of the particle,
+- <span class="arithmatex">\(\mathbf{E}\)</span> is the electric field,
+- <span class="arithmatex">\(\mathbf{B}\)</span> is the magnetic field,
+- <span class="arithmatex">\(\mathbf{v}\)</span> is the velocity of the particle.</p>
+<p>This force plays a key role in a variety of systems such as particle accelerators, mass spectrometers, and plasma confinement devices. Understanding and simulating the effects of this force helps us explore particle trajectories and optimize the design of such systems.</p>
+<h2 id="2-task">2. Task</h2>
+<h3 id="21-exploration-of-applications">2.1 Exploration of Applications</h3>
+<p>The Lorentz force governs the behavior of charged particles in several key systems:</p>
 <ul>
 <li>
-<p><strong>Series Connection</strong>: In a series connection, the total resistance is the sum of individual resistances:<br/>
-  $$ R_{eq} = R_1 + R_2 + \dots + R_n $$<br/>
-  This happens when resistors are connected end-to-end, such that current flows through each resistor one after the other.</p>
+<p><strong>Particle Accelerators:</strong> The Lorentz force is used to accelerate particles to high speeds within electric and magnetic fields. Systems like cyclotrons and linear accelerators rely on this force to control particle motion and increase their energy.</p>
 </li>
 <li>
-<p><strong>Parallel Connection</strong>: In a parallel connection, the total resistance is the reciprocal of the sum of the reciprocals of individual resistances:<br/>
-  $$ \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n} $$<br/>
-  This occurs when resistors are connected across the same two points, allowing current to split between them.</p>
+<p><strong>Mass Spectrometers:</strong> The magnetic field in a mass spectrometer applies the Lorentz force to charged particles to separate them based on their mass-to-charge ratio.</p>
+</li>
+<li>
+<p><strong>Plasma Confinement:</strong> In fusion reactors and magnetic confinement devices (e.g., Tokamaks), the Lorentz force helps contain plasma by guiding the motion of charged particles within a magnetic field.</p>
 </li>
 </ul>
-<h3 id="22-graph-theory-approach">2.2 Graph Theory Approach</h3>
-<p>To calculate the equivalent resistance using graph theory, we represent the circuit as a graph where:</p>
-<ul>
-<li>Each <strong>node</strong> represents a junction in the circuit.</li>
-<li>Each <strong>edge</strong> represents a resistor, with a weight equal to the resistance value.</li>
-</ul>
-<p>The goal is to simplify the graph by iteratively combining resistors that are in series or parallel until only one equivalent resistance remains.</p>
-<hr/>
-<h3 id="23-algorithm-description">2.3 Algorithm Description</h3>
-<p>The basic algorithm follows these steps:</p>
+<p>The electric field <span class="arithmatex">\(\mathbf{E}\)</span> and magnetic field <span class="arithmatex">\(\mathbf{B}\)</span> influence the motion of the particle in distinct ways:
+- The electric field directly accelerates the particle along its direction.
+- The magnetic field causes the particle to move in circular or helical trajectories, depending on the initial velocity.</p>
+<h3 id="22-simulating-particle-motion">2.2 Simulating Particle Motion</h3>
+<p>The goal of this task is to implement a simulation to compute and visualize the trajectory of a charged particle under various field configurations. We will simulate three key scenarios:</p>
 <ol>
 <li>
-<p><strong>Identify Series and Parallel Connections</strong>:</p>
-<ul>
-<li><strong>Series</strong>: If two resistors are connected in series, replace them with their combined resistance.</li>
-<li><strong>Parallel</strong>: If two resistors are in parallel, replace them with their combined equivalent resistance.</li>
-</ul>
+<p><strong>Uniform Magnetic Field</strong>: The particle experiences only a magnetic field, resulting in a circular motion (if velocity is perpendicular to the magnetic field).</p>
 </li>
 <li>
-<p><strong>Iterative Graph Reduction</strong>:</p>
-<ul>
-<li>The algorithm iterates through the graph, identifying and simplifying series and parallel combinations until only one edge remains, representing the total equivalent resistance.</li>
-</ul>
+<p><strong>Combined Uniform Electric and Magnetic Fields</strong>: The particle is subject to both electric and magnetic fields, leading to helical motion.</p>
 </li>
 <li>
-<p><strong>Handling Nested Combinations</strong>:</p>
-<ul>
-<li>For nested series and parallel combinations, the algorithm needs to recursively reduce the graph, ensuring all possible combinations are considered.</li>
-</ul>
+<p><strong>Crossed Electric and Magnetic Fields</strong>: In this configuration, the electric and magnetic fields are perpendicular to each other, producing drift motion.</p>
 </li>
 </ol>
-<h3 id="24-pseudocode">2.4 Pseudocode</h3>
-<pre><code class="language-text">function calculateEquivalentResistance(graph):
-    while graph contains more than one edge:
-        for each edge (u, v) in graph:
-            if u and v are in series:
-                Replace (u, v) with the combined resistance.
-            if u and v are in parallel:
-                Replace (u, v) with the equivalent parallel resistance.
-    return the resistance of the remaining edge.
+<p>We will use numerical methods such as the Euler method or Runge-Kutta method to solve the equations of motion. Below is a Python code that simulates the particle's motion under the effect of the Lorentz force.</p>
+<h3 id="23-python-code">2.3 Python Code</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.constants import e, m
+
+# Function to compute the Lorentz force
+def lorentz_force(q, m, E, B, v):
+    return q * (E + np.cross(v, B))
+
+# Function to update the position and velocity of the particle using Euler's method
+def update_position_velocity(r, v, q, m, E, B, dt):
+    F = lorentz_force(q, m, E, B, v)
+    a = F / m  # Acceleration
+    r_new = r + v * dt  # New position
+    v_new = v + a * dt  # New velocity
+    return r_new, v_new
+
+# Initial conditions and constants
+q = e  # Charge of the particle (electron charge)
+m = 9.11e-31  # Mass of the particle (electron mass)
+v0 = np.array([1e5, 0, 0])  # Initial velocity (m/s)
+r0 = np.array([0, 0, 0])  # Initial position (m)
+B = np.array([0, 0, 1])  # Magnetic field (Tesla)
+E = np.array([0, 0, 0])  # Electric field (V/m) - set to 0 for magnetic only case
+dt = 1e-9  # Time step (s)
+num_steps = 1000  # Number of simulation steps
+
+# Arrays to store the trajectory
+r_values = [r0]
+v_values = [v0]
+
+# Simulate the particle's motion
+r = r0
+v = v0
+for _ in range(num_steps):
+    r, v = update_position_velocity(r, v, q, m, E, B, dt)
+    r_values.append(r)
+    v_values.append(v)
+
+# Convert the trajectory to numpy arrays
+r_values = np.array(r_values)
+
+# Plot the trajectory in 3D space
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(r_values[:, 0], r_values[:, 1], r_values[:, 2])
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.set_title("Particle Trajectory in Magnetic Field")
+plt.show()
 </code></pre>
-<h1 id="3-task-full-implementation">3. Task: Full Implementation</h1>
-<h2 id="31-python-implementation">3.1 Python Implementation</h2>
-<p>Below is a Python implementation using the networkx library to model the circuit graph and calculate the equivalent resistance.</p>
-<pre><code class="language-python">import networkx as nx
-
-def series_combination(R1, R2):
-    # Resistance for series connection
-    return R1 + R2
-
-def parallel_combination(R1, R2):
-    # Resistance for parallel connection
-    return 1 / (1/R1 + 1/R2)
-
-def simplify_graph(graph):
-    # Identify and reduce series or parallel resistors iteratively
-    simplified = False # Flag to indicate if any simplification occurred in the loop
-    while len(graph.edges) &gt; 1 and simplified:
-        simplified = False # Reset the flag at the start of each iteration
-        for u, v, data in list(graph.edges(data=True)):  # Iterate through edges with data
-            # Check for series connection
-            if check_series(graph, u, v):
-                R_total = series_combination(data['resistance'], 0)  # Only consider the resistance of the current edge
-                # Find the other node connected to 'v' (excluding 'u')
-                neighbors_v = list(graph.neighbors(v))
-                other_node = next((n for n in neighbors_v if n != u), None)
-                if other_node:
-                    R_total = series_combination(data['resistance'], graph[v][other_node]['resistance'])  # Consider both resistors in series
-                    graph.add_edge(u, other_node, resistance=R_total)  # Add the combined resistor
-                    graph.remove_edge(u, v)
-                    graph.remove_edge(v, other_node)
-                    simplified = True # Set the flag to True as simplification occurred
-                    break # Exit the inner loop as a simplification was made
-
-            # Check for parallel connection
-            elif check_parallel(graph, u, v):
-                R_total = parallel_combination(data['resistance'], graph[u][v]['resistance'])
-                graph[u][v]['resistance'] = R_total
-                simplified = True # Set the flag to True as simplification occurred
-                break # Exit the inner loop as a simplification was made
-
-    # The remaining edge represents the total equivalent resistance
-    if len(graph.edges) &gt; 0:
-        return list(graph.edges(data=True))[0][2]['resistance']
-    else:
-        return 0  # Handle the case where all edges are simplified
-
-
-def check_series(graph, u, v):
-    # Check if u and v have degree 2 and share a common neighbor (indicating series connection)
-    return graph.degree(u) == 2 and graph.degree(v) == 2 and len(list(nx.common_neighbors(graph, u, v))) == 1
-
-def check_parallel(graph, u, v):
-    # Check if u and v have the same neighbors (indicating parallel connection)
-    return set(graph.neighbors(u)) == set(graph.neighbors(v))
-
-# Example usage:
-G = nx.Graph()
-G.add_edge('A', 'B', resistance=5)
-G.add_edge('B', 'C', resistance=10)
-G.add_edge('A', 'C', resistance=15)
-
-equivalent_resistance = simplify_graph(G)
-print(f"The equivalent resistance is: {equivalent_resistance} Ohms")
-</code></pre>
-<h2 id="32-explanation-of-the-code">3.2 Explanation of the Code</h2>
+<h2 id="24-explanation-of-the-code">2.4 Explanation of the Code</h2>
+<ul>
+<li><strong>lorentz_force()</strong>: This function computes the Lorentz force acting on the particle at each step, considering both the electric and magnetic fields. The force is calculated using the formula:</li>
+</ul>
+<p>$$
+  \mathbf{F} = q (\mathbf{E} + \mathbf{v} \times \mathbf{B})
+  $$</p>
+<p>where:
+  - <span class="arithmatex">\(q\)</span> is the charge of the particle,
+  - <span class="arithmatex">\(\mathbf{E}\)</span> is the electric field,
+  - <span class="arithmatex">\(\mathbf{v}\)</span> is the velocity of the particle,
+  - <span class="arithmatex">\(\mathbf{B}\)</span> is the magnetic field.</p>
 <ul>
 <li>
-<p><strong><code>series_combination(R1, R2)</code></strong>: This function calculates the total resistance of two resistors connected in series using the formula:<br/>
-  $$ R_{eq} = R_1 + R_2 $$<br/>
-  It returns the combined resistance.</p>
+<p><strong>update_position_velocity()</strong>: Using Euler's method, this function updates the particle's position and velocity at each time step. The particle's new position is calculated by adding the product of the velocity and the time step (<span class="arithmatex">\(\mathbf{r}_{\text{new}} = \mathbf{r} + \mathbf{v} \cdot \Delta t\)</span>), while the velocity is updated based on the acceleration, which is derived from the Lorentz force.</p>
 </li>
 <li>
-<p><strong><code>parallel_combination(R1, R2)</code></strong>: This function calculates the total resistance of two resistors connected in parallel using the formula:<br/>
-  $$ \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} $$<br/>
-  It returns the combined equivalent resistance for the parallel resistors.</p>
+<p><strong>Initial Conditions</strong>: The particle starts at the origin (position <span class="arithmatex">\(\mathbf{r_0} = [0, 0, 0]\)</span>) with an initial velocity along the x-axis (<span class="arithmatex">\(\mathbf{v_0} = [1 \times 10^5, 0, 0]\)</span>). The magnetic field is set along the z-axis (<span class="arithmatex">\(\mathbf{B} = [0, 0, 1]\)</span>), and the electric field is zero for the magnetic-only case.</p>
 </li>
 <li>
-<p><strong><code>simplify_graph(graph)</code></strong>: This function simplifies the graph iteratively by checking each edge to see if the resistors are in series or parallel. It applies the corresponding formula and removes the simplified edge from the graph until only one edge remains, representing the total equivalent resistance.</p>
+<p><strong>Trajectory Simulation</strong>: The loop iterates over a predefined number of time steps. At each step, the position and velocity are updated using the Lorentz force and Euler's method. This allows us to track the particle's motion under the influence of the fields.</p>
 </li>
 <li>
-<p><strong><code>check_series(u, v)</code></strong> and <strong><code>check_parallel(u, v)</code></strong>: These functions are used to check whether two nodes (representing resistors) are in series or parallel. While the actual logic for checking is not implemented here, it would rely on the graph's structure to determine the connection type.</p>
+<p><strong>Plotting</strong>: The final trajectory is plotted in 3D space using Matplotlib. The plot visualizes the path of the particle, showing its movement over time in the magnetic field.</p>
 </li>
 </ul>
-<hr/>
-<h2 id="4-results">4. Results</h2>
-<p>Running the simulation for different circuits, the algorithm computes the equivalent resistance based on the series and parallel combinations of resistors.</p>
-<h3 id="example">Example:</h3>
+<h2 id="25-parameter-exploration">2.5 Parameter Exploration</h2>
+<p>To explore the effects of different parameters, we can modify:</p>
 <ul>
 <li>
-<p><strong>Simple Series Connection</strong>:<br/>
-  If there are two resistors with resistances of 5Ω and 10Ω connected in series, the equivalent resistance is:<br/>
-  $$ R_{eq} = 5 + 10 = 15Ω $$</p>
+<p><strong>Field Strengths (<span class="arithmatex">\(B\)</span> and <span class="arithmatex">\(E\)</span>)</strong>: Changing the magnetic or electric field strengths alters the particle's trajectory. A stronger magnetic field results in a tighter circular path, while a stronger electric field can influence the particle's acceleration and velocity.</p>
 </li>
 <li>
-<p><strong>Simple Parallel Connection</strong>:<br/>
-  If there are two resistors with resistances of 5Ω and 10Ω connected in parallel, the equivalent resistance is:<br/>
-  $$ \frac{1}{R_{eq}} = \frac{1}{5} + \frac{1}{10} = 3.33Ω $$</p>
+<p><strong>Initial Velocity (<span class="arithmatex">\(v_0\)</span>)</strong>: The initial velocity direction and magnitude determine the radius of the circular path in the magnetic field. If both electric and magnetic fields are present, the particle will follow a helical motion with the pitch of the helix determined by the relative strengths of the fields and the particle's velocity.</p>
+</li>
+<li>
+<p><strong>Charge and Mass (<span class="arithmatex">\(q\)</span> and <span class="arithmatex">\(m\)</span>)</strong>: The charge and mass of the particle influence the curvature of the path. Heavier particles (greater mass) have a larger radius of curvature, while lighter particles move more quickly in response to the Lorentz force. The charge also affects the direction of motion, with positively and negatively charged particles moving in opposite directions in the presence of a magnetic field.</p>
 </li>
 </ul>
-<p>The algorithm can handle more complex configurations as well, like circuits with nested series and parallel connections.</p>
-<h3 id="example-complex-circuit">Example Complex Circuit:</h3>
+<h2 id="26-visualization">2.6 Visualization</h2>
+<p>The simulation can be visualized by plotting the particle's trajectory in 2D or 3D, as shown in the code above. By varying the field strengths and initial conditions, we can observe different types of motion:</p>
 <ul>
-<li>A network with resistors arranged in both series and parallel configurations. The algorithm simplifies the graph and calculates the final equivalent resistance after applying the necessary reductions.</li>
+<li>
+<p><strong>Circular motion</strong>: A result of only the magnetic field. The particle moves in a circle with a radius determined by the particle's velocity and the magnetic field strength.</p>
+</li>
+<li>
+<p><strong>Helical motion</strong>: A result of both electric and magnetic fields. The particle moves in a helix, with the pitch of the helix determined by the relative strengths of the fields and the particle's velocity.</p>
+</li>
+<li>
+<p><strong>Drift motion</strong>: Occurs when the electric and magnetic fields are crossed. The particle exhibits motion along a straight path with a constant drift velocity in the direction of the electric field.</p>
+</li>
 </ul>
-<hr/>
-<h2 id="5-conclusion">5. Conclusion</h2>
-<p>This approach to calculating the equivalent resistance of electrical circuits using graph theory provides a structured, systematic method for simplifying complex resistor networks. By representing the circuit as a graph, we can efficiently calculate the total resistance using iterative graph simplifications, such as combining series and parallel resistances.</p>
-<p>The use of graph theory in circuit analysis demonstrates the power of mathematical methods in solving real-world engineering problems. With this approach, one can analyze even the most complicated resistor networks, which is highly useful in modern circuit simulation software, optimization problems, and network design.</p>
-<p>By implementing this algorithm, engineers and designers can automate the process of calculating equivalent resistance, allowing for faster analysis and better optimization in the design of electrical circuits.</p>
+<h2 id="3-results">3. Results</h2>
+<p>Running the simulation for various initial conditions and field configurations will produce the following observations:</p>
+<ul>
+<li>
+<p>In a <strong>uniform magnetic field</strong>, the particle will move in a circular trajectory, with the radius determined by the particle's velocity and the magnetic field strength.</p>
+</li>
+<li>
+<p>When both <strong>electric and magnetic fields</strong> are present, the particle will follow a helical path, with the pitch of the helix determined by the relative strengths of the fields and the particle's velocity.</p>
+</li>
+<li>
+<p>In the case of <strong>crossed electric and magnetic fields</strong>, the particle exhibits drift motion, where the velocity components in the electric and magnetic directions result in motion along a straight path with constant drift velocity.</p>
+</li>
+</ul>
+<h2 id="4-conclusion">4. Conclusion</h2>
+<p>This simulation provides an intuitive understanding of the effects of the Lorentz force on charged particles. By varying the parameters and visualizing the resulting trajectories, we gain insight into the fundamental principles that govern particle motion in electric and magnetic fields. These principles have practical applications in systems such as particle accelerators, plasma confinement, and mass spectrometers.</p>
+<p>The simulation also highlights key phenomena such as:</p>
+<ul>
+<li><strong>Larmor radius</strong>: The radius of the circular motion of a charged particle in a magnetic field.</li>
+<li><strong>Drift velocity</strong>: The velocity of the particle along the direction of the crossed fields.</li>
+</ul>
+<p>This hands-on approach to the Lorentz force can be extended to more complex scenarios, such as non-uniform magnetic fields, and can be adapted for use in real-world systems.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
