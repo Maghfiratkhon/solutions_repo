@@ -138,7 +138,8 @@ v0 = [1e5, 0, 0]          # Velocity in x-direction
 pos, vel = simulate_trajectory(r0, v0, E, B, t_max)
 plot_trajectory(pos, "Crossed E and B Fields (Drift Motion)")
 ```
-![image](https://github.com/user-attachments/assets/62ae65e7-0478-4445-9e46-1ba2a231f746)
+![image](https://github.com/user-attachments/assets/62abdd36-e8c9-4c0b-b743-da9d5b85fa70)
+
 
 
 ## 2.4 Explanation of the Code
