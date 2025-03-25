@@ -179,15 +179,15 @@ The CLT is pivotal in:
 
 ### 1.7.1 Theoretical Connection
 
-- The CLT predicts normality for large $ n $, which our simulations confirm across all distributions.
+- The CLT predicts normality for large $n$, which our simulations confirm across all distributions.
 
 - The rate of convergence varies: skewed distributions (Exponential) take longer, while symmetric ones (Uniform, Binomial) align faster.
 
-- The variance of the sampling distribution scales as $ \sigma^2/n $, matching observed tightening of histograms.
+- The variance of the sampling distribution scales as $\sigma^2/n$, matching observed tightening of histograms.
 
 ### 1.7.2 Implications
 
-- The CLT justifies using normal-based methods (e.g., z-tests) even for non-normal populations, provided $ n $ is sufficiently large.
+- The CLT justifies using normal-based methods (e.g., z-tests) even for non-normal populations, provided $n$ is sufficiently large.
 
 - Simulations reinforce that “sufficiently large” depends on the population’s shape and variance.
 
