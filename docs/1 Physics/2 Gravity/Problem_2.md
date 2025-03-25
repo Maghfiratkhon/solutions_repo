@@ -87,6 +87,7 @@ ax.set_xticklabels(labels)
 ax.legend()
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/107455b0-ed05-492e-bc2a-1580192e6e10)
 
 ## 5. Discussion
 
