@@ -172,6 +172,111 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="1-escape-velocities-and-cosmic-velocities">1. Escape Velocities and Cosmic Velocities</h1>
+<h2 id="11-motivation">1.1 Motivation</h2>
+<p>The concept of escape velocity is fundamental in astrophysics and space exploration. It determines the velocity required for an object to overcome a celestial body's gravitational pull. Extending this, the first, second, and third cosmic velocities define the conditions for orbiting, escaping a planet, and escaping a star system, respectively. Understanding these velocities is crucial for launching satellites, space missions, and potential interstellar travel.</p>
+<h2 id="2-definitions">2. Definitions</h2>
+<h3 id="21-first-cosmic-velocity-orbital-velocity">2.1 First Cosmic Velocity (Orbital Velocity)</h3>
+<p>The minimum velocity required for an object to maintain a stable circular orbit around a celestial body.</p>
+<div class="arithmatex">\[
+v_1 = \sqrt{\frac{GM}{R}}
+\]</div>
+<p>where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(G\)</span> is the gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11} m^3 kg^{-1} s^{-2}\)</span>)</p>
+</li>
+<li>
+<p><span class="arithmatex">\(M\)</span> is the mass of the celestial body</p>
+</li>
+<li>
+<p><span class="arithmatex">\(R\)</span> is the radius of the celestial body</p>
+</li>
+</ul>
+<h3 id="22-second-cosmic-velocity-escape-velocity">2.2 Second Cosmic Velocity (Escape Velocity)</h3>
+<p>The velocity required for an object to escape a celestial body's gravitational influence without further propulsion.</p>
+<div class="arithmatex">\[
+v_2 = \sqrt{\frac{2GM}{R}} = \sqrt{2} v_1
+\]</div>
+<h3 id="23-third-cosmic-velocity-interstellar-escape-velocity">2.3 Third Cosmic Velocity (Interstellar Escape Velocity)</h3>
+<p>The velocity required to escape the gravitational pull of a star system, such as the Solar System.</p>
+<div class="arithmatex">\[
+v_3 = \sqrt{\frac{2GM_{\odot}}{R}}
+\]</div>
+<p>where <span class="arithmatex">\(M_{\odot}\)</span> is the mass of the Sun and <span class="arithmatex">\(R\)</span> is the distance from the Sun.</p>
+<h2 id="3-mathematical-analysis-and-parameters">3. Mathematical Analysis and Parameters</h2>
+<p>The velocities depend on:</p>
+<ul>
+<li>
+<p>The mass of the celestial body</p>
+</li>
+<li>
+<p>The radius from the center of the celestial body</p>
+</li>
+<li>
+<p>Gravitational constant <span class="arithmatex">\(G\)</span></p>
+</li>
+</ul>
+<p>These values vary for different celestial bodies like Earth, Mars, and Jupiter, affecting their respective cosmic velocities.</p>
+<h2 id="4-python-implementation">4. Python Implementation</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.674e-11  # Gravitational constant in m^3/kg/s^2
+bodies = {
+    "Earth": {"mass": 5.972e24, "radius": 6371e3},
+    "Mars": {"mass": 6.417e23, "radius": 3389e3},
+    "Jupiter": {"mass": 1.898e27, "radius": 69911e3}
+}
+
+# Function to calculate velocities
+def cosmic_velocities(mass, radius):
+    v1 = np.sqrt(G * mass / radius)  # First cosmic velocity
+    v2 = np.sqrt(2) * v1  # Second cosmic velocity
+    return v1, v2
+
+# Compute velocities
+velocities = {body: cosmic_velocities(data["mass"], data["radius"]) for body, data in bodies.items()}
+
+# Visualization
+labels, v1_vals, v2_vals = zip(*[(body, v[0], v[1]) for body, v in velocities.items()])
+x = np.arange(len(labels))
+width = 0.3
+fig, ax = plt.subplots()
+ax.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity')
+ax.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity')
+ax.set_ylabel('Velocity (m/s)')
+ax.set_title('Cosmic Velocities for Different Celestial Bodies')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+plt.show()
+</code></pre>
+<h2 id="5-discussion">5. Discussion</h2>
+<h3 id="51-importance-in-space-exploration">5.1 Importance in Space Exploration</h3>
+<ul>
+<li>
+<p>The first cosmic velocity is crucial for satellites to remain in orbit.</p>
+</li>
+<li>
+<p>The second cosmic velocity enables missions to other planets and deep space.</p>
+</li>
+<li>
+<p>The third cosmic velocity allows interstellar travel and potential exploration beyond the Solar System.</p>
+</li>
+</ul>
+<h3 id="52-challenges">5.2 Challenges</h3>
+<ul>
+<li>
+<p>Achieving these velocities requires significant energy and propulsion technology.</p>
+</li>
+<li>
+<p>Interstellar travel is constrained by fuel, life support, and current propulsion limitations.</p>
+</li>
+</ul>
+<h2 id="6-conclusion">6. Conclusion</h2>
+<p>Understanding cosmic velocities is vital for space missions and future interstellar endeavors. With advancements in propulsion technology, we may one day achieve the speeds necessary for deep space exploration beyond our Solar System.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
