@@ -238,66 +238,104 @@
 <h2 id="31-python-implementation">3.1 Python Implementation</h2>
 <p>Below is a Python implementation using the networkx library to model the circuit graph and calculate the equivalent resistance.</p>
 <pre><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
 
-def series_combination(R1, R2):
-    # Resistance for series connection
-    return R1 + R2
+def reduce_series(G):
+    """Reduce series connections in the graph."""
+    nodes_to_remove = [n for n in G.nodes if G.degree(n) == 2]
+    for n in nodes_to_remove:
+        if n in G:  # Check if node still exists
+            neighbors = list(G.neighbors(n))
+            if len(neighbors) == 2:  # Ensure still degree 2
+                n1, n2 = neighbors
+                # Get weights from edges data, handling potential KeyError
+                edges_data = G.get_edge_data(n, n1)
+                # Handle the case where the edge data is empty:
+                R1 = edges_data[0]['weight'] if edges_data else 0  
 
-def parallel_combination(R1, R2):
-    # Resistance for parallel connection
-    return 1 / (1/R1 + 1/R2)
+                edges_data = G.get_edge_data(n, n2)
+                # Handle the case where the edge data is empty:
+                R2 = edges_data[0]['weight'] if edges_data else 0 
 
-def simplify_graph(graph):
-    # Identify and reduce series or parallel resistors iteratively
-    simplified = False # Flag to indicate if any simplification occurred in the loop
-    while len(graph.edges) &gt; 1 and simplified:
-        simplified = False # Reset the flag at the start of each iteration
-        for u, v, data in list(graph.edges(data=True)):  # Iterate through edges with data
-            # Check for series connection
-            if check_series(graph, u, v):
-                R_total = series_combination(data['resistance'], 0)  # Only consider the resistance of the current edge
-                # Find the other node connected to 'v' (excluding 'u')
-                neighbors_v = list(graph.neighbors(v))
-                other_node = next((n for n in neighbors_v if n != u), None)
-                if other_node:
-                    R_total = series_combination(data['resistance'], graph[v][other_node]['resistance'])  # Consider both resistors in series
-                    graph.add_edge(u, other_node, resistance=R_total)  # Add the combined resistor
-                    graph.remove_edge(u, v)
-                    graph.remove_edge(v, other_node)
-                    simplified = True # Set the flag to True as simplification occurred
-                    break # Exit the inner loop as a simplification was made
+                G.remove_node(n)
+                G.add_edge(n1, n2, weight=R1 + R2)
+    return G
 
-            # Check for parallel connection
-            elif check_parallel(graph, u, v):
-                R_total = parallel_combination(data['resistance'], graph[u][v]['resistance'])
-                graph[u][v]['resistance'] = R_total
-                simplified = True # Set the flag to True as simplification occurred
-                break # Exit the inner loop as a simplification was made
+def reduce_parallel(G):
+    """Reduce parallel connections in the graph."""
+    edges_processed = set()
+    for u in G.nodes:
+        for v in G.nodes:
+            if u &lt; v and G.has_edge(u, v):
+                edges = list(G[u][v].items())  # Get all edges between u and v
+                if len(edges) &gt; 1:  # Multiple edges indicate parallel resistors
+                    R_values = [data['weight'] for _, data in edges]
+                    R_parallel = 1 / sum(1/R for R in R_values)
+                    G.remove_edges_from([(u, v)] * len(edges))  
+                    G.add_edge(u, v, weight=R_parallel)
+                    edges_processed.add((u, v))
+    return G
 
-    # The remaining edge represents the total equivalent resistance
-    if len(graph.edges) &gt; 0:
-        return list(graph.edges(data=True))[0][2]['resistance']
-    else:
-        return 0  # Handle the case where all edges are simplified
+def calculate_equivalent_resistance(G, source, sink):
+    """Calculate equivalent resistance between source and sink."""
+    G = G.copy()  # Work on a copy to preserve original graph
+    while len(G.edges) &gt; 1 or len(G.nodes) &gt; 2:
+        prev_edges = len(G.edges)
+        G = reduce_series(G)
+        G = reduce_parallel(G)
+        if len(G.edges) == prev_edges:  # No reduction possible
+            break
+    if G.has_edge(source, sink):
+        # Iterate through edges for MultiGraph:
+        for _, data in G[source][sink].items():
+            return data['weight']
+    return float('inf')  # No path exists
 
 
-def check_series(graph, u, v):
-    # Check if u and v have degree 2 and share a common neighbor (indicating series connection)
-    return graph.degree(u) == 2 and graph.degree(v) == 2 and len(list(nx.common_neighbors(graph, u, v))) == 1
+def draw_graph(G, title):
+    """Visualize the graph."""
+    pos = nx.spring_layout(G)
+    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=500)
+    labels = nx.get_edge_attributes(G, 'weight')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+    plt.title(title)
+    plt.show()
 
-def check_parallel(graph, u, v):
-    # Check if u and v have the same neighbors (indicating parallel connection)
-    return set(graph.neighbors(u)) == set(graph.neighbors(v))
+# Example 1: Simple Series Circuit
+G1 = nx.MultiGraph()  # Use MultiGraph to allow parallel edges
+G1.add_edge(0, 1, weight=2)
+G1.add_edge(1, 2, weight=3)
+print("Example 1 - Series (2Ω + 3Ω):")
+print(f"Equivalent Resistance: {calculate_equivalent_resistance(G1, 0, 2)} Ω")
+draw_graph(G1, "Simple Series Circuit")
 
-# Example usage:
-G = nx.Graph()
-G.add_edge('A', 'B', resistance=5)
-G.add_edge('B', 'C', resistance=10)
-G.add_edge('A', 'C', resistance=15)
+# Example 2: Simple Parallel Circuit
+G2 = nx.MultiGraph()
+G2.add_edge(0, 1, weight=4)
+G2.add_edge(0, 1, weight=4)  # Parallel resistors
+print("\nExample 2 - Parallel (4Ω || 4Ω):")
+print(f"Equivalent Resistance: {calculate_equivalent_resistance(G2, 0, 1)} Ω")
+draw_graph(G2, "Simple Parallel Circuit")
 
-equivalent_resistance = simplify_graph(G)
-print(f"The equivalent resistance is: {equivalent_resistance} Ohms")
+# Example 3: Nested Configuration (Series with Parallel)
+G3 = nx.MultiGraph()
+G3.add_edge(0, 1, weight=2)       # 2Ω in series
+G3.add_edge(1, 2, weight=3)       # 3Ω parallel
+G3.add_edge(1, 2, weight=6)       # 6Ω parallel
+G3.add_edge(2, 3, weight=1)       # 1Ω in series
+print("\nExample 3 - Nested (2Ω + (3Ω || 6Ω) + 1Ω):")
+print(f"Equivalent Resistance: {calculate_equivalent_resistance(G3, 0, 3)} Ω")
+draw_graph(G3, "Nested Series-Parallel Circuit")
 </code></pre>
+<p>Example 1 - Series (2Ω + 3Ω):
+Equivalent Resistance: 5 Ω
+<img alt="image" src="https://github.com/user-attachments/assets/a88b4f64-9796-412c-b81f-c403c5be48bf"/></p>
+<p>Example 2 - Parallel (4Ω || 4Ω):
+Equivalent Resistance: 2.0 Ω
+<img alt="image" src="https://github.com/user-attachments/assets/73a608af-7597-45f2-8ef7-b80f655af444"/></p>
+<p>Example 3 - Nested (2Ω + (3Ω || 6Ω) + 1Ω):
+Equivalent Resistance: 5.0 Ω
+<img alt="image" src="https://github.com/user-attachments/assets/3ed63b6f-0f03-47a7-8c57-c394fb33be88"/></p>
 <h2 id="32-explanation-of-the-code">3.2 Explanation of the Code</h2>
 <ul>
 <li>
