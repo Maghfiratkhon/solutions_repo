@@ -139,8 +139,9 @@ pos, vel = simulate_trajectory(r0, v0, E, B, t_max)
 plot_trajectory(pos, "Crossed E and B Fields (Drift Motion)")
 ```
 ![image](https://github.com/user-attachments/assets/5fe47ef9-fe13-4291-a194-3f60c11c3f82)
-![image](https://github.com/user-attachments/assets/a1beae31-3a26-4fde-aa37-a888daf701dc)
-![image](https://github.com/user-attachments/assets/fd7fddef-dd5f-450b-8176-a0fb71dbf34d)
+![image](https://github.com/user-attachments/assets/32693a47-18f3-4246-8983-c32ae2306ef7)
+![image](https://github.com/user-attachments/assets/a5cab336-c09e-4028-8af4-d748ae227642)
+
 
 
 
