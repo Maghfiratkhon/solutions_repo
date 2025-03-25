@@ -87,6 +87,15 @@ print("\nBinomial Distribution - Population Mean:", np.mean(binom_pop),
       "Variance:", np.var(binom_pop))
 simulate_clt(binom_pop, "Binomial Distribution")
 ```
+Uniform Distribution - Population Mean: 0.49415955768429964 Variance: 0.0827228165769653
+![image](https://github.com/user-attachments/assets/d7d700ef-8507-47f0-a167-b175ee12819e)
+
+Exponential Distribution - Population Mean: 0.9858485597955667 Variance: 0.9924010974352161
+![image](https://github.com/user-attachments/assets/fb777432-bd14-44ff-a78c-0998ab6f3695)
+
+Binomial Distribution - Population Mean: 5.007 Variance: 2.461351
+![image](https://github.com/user-attachments/assets/5dd482d8-4c73-4aef-bf83-a0578cfce30f)
+
 
 ## 1.4 Results and Visualizations
 
