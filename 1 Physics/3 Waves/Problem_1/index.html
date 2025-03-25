@@ -274,14 +274,23 @@ plt.ylabel('Y Position (m)')
 plt.show()
 </code></pre>
 <p><img alt="image" src="https://github.com/user-attachments/assets/99aa2f8b-9c47-41d1-b3fc-ffe6936c51fb"/></p>
-<h2 id="51-explanation-of-the-code">5.1 Explanation of the Code</h2>
-<p>The function <code>wave_source(x, y, x_s, y_s, A, k, omega, t)</code> calculates the displacement at point <span class="arithmatex">\((x, y)\)</span> due to a wave emitted from a source at <span class="arithmatex">\((x_s, y_s)\)</span>.</p>
-<p>The <code>total_displacement(x, y, sources, A, k, omega, t)</code> function sums the contributions of all wave sources using the superposition principle.</p>
-<p>The simulation generates a grid of points on the water surface and calculates the resulting displacement at each point.</p>
-<p>A contour plot is generated to visualize the interference patterns.</p>
+<h2 id="5-code-explanation">5. Code Explanation</h2>
+<p>The <strong><code>wave_source</code></strong> function calculates the displacement at a given point <span class="arithmatex">\((x, y)\)</span> due to a wave emitted from a source at <span class="arithmatex">\((x_s, y_s)\)</span>. This is based on the wave equation.</p>
+<p>The <strong><code>total_displacement</code></strong> function computes the total displacement at each point on the grid by summing the contributions from all wave sources using the superposition principle.</p>
+<p>The positions of the sources are determined based on the vertices of the chosen regular polygon (triangle, square, pentagon, etc.).</p>
+<p>A <strong>contour plot</strong> is generated to visualize the interference pattern, showing regions of constructive interference (where the waves add up) and destructive interference (where the waves cancel out).</p>
 <hr/>
-<h1 id="6-conclusion">6. Conclusion</h1>
-<p>In this task, we explored the interference patterns formed by the superposition of waves emitted from point sources placed at the vertices of a regular polygon. By understanding wave interactions and visualizing the resulting interference, we gained insight into wave behavior and the principle of superposition. This hands-on approach to wave physics helps demonstrate important concepts such as constructive and destructive interference and the impact of multiple wave sources on the formation of interference patterns.</p>
+<h2 id="6-results">6. Results</h2>
+<p>Running the simulation for different polygons will give interference patterns that depend on the number of sources:</p>
+<ul>
+<li><strong>Equilateral Triangle</strong>: With 3-point sources, the pattern will exhibit symmetry with distinct regions of constructive and destructive interference.</li>
+<li><strong>Square</strong>: With 4-point sources, the interference pattern will show more intricate regions due to the additional symmetry.</li>
+<li><strong>Pentagon</strong>: With 5-point sources, the pattern will be more complex, with more vertices influencing the wave interactions.</li>
+</ul>
+<hr/>
+<h2 id="7-conclusion">7. Conclusion</h2>
+<p>In this task, we analyzed the interference patterns created by waves emitted from point sources placed at the vertices of a regular polygon. By using the principle of superposition, we were able to understand how waves interact to create constructive and destructive interference patterns. </p>
+<p>This hands-on approach to wave physics provides valuable insight into wave behavior and its real-world applications, such as acoustics, optics, and water wave dynamics.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
