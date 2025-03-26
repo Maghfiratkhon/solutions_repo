@@ -220,6 +220,7 @@ plt.title(f"Monte Carlo Estimation of π\nEstimate: {pi_estimate:.5f}")
 plt.legend()
 plt.show()
 </code></pre>
+<p><img alt="image" src="https://github.com/user-attachments/assets/d5798ae0-9968-46c8-a9d7-40073ed65c07"/></p>
 <p><strong>Description</strong>: The plot shows a square with a cloud of points. Blue points (inside <span class="arithmatex">\(x^2 + y^2 \leq 1\)</span>) form a circular pattern, while red points fill the remaining square. The title includes the estimated <span class="arithmatex">\(π\)</span> value.</p>
 <h2 id="24-analysis">2.4 Analysis</h2>
 <p>To study convergence, we’ll test different sample sizes:</p>
@@ -239,6 +240,7 @@ plt.ylabel('Absolute Error')
 plt.title('Convergence of π Estimate')
 plt.show()
 </code></pre>
+<p><img alt="image" src="https://github.com/user-attachments/assets/f581a6af-ff0f-442d-8d13-da67282536cd"/></p>
 <h2 id="estimating-using-monte-carlo-methods_1">Estimating π Using Monte Carlo Methods</h2>
 <h2 id="24-analysis_1">2.4 Analysis</h2>
 <p><strong>Description</strong>: The graph shows error decreasing as the number of points increases, though with fluctuations due to randomness. The convergence rate is approximately <span class="arithmatex">\(O(1/\sqrt{N})\)</span>, typical of Monte Carlo methods, reflecting the statistical nature of the estimate.</p>
@@ -292,7 +294,14 @@ print(f"Estimated π with {n_drops} drops: {pi_estimate}")
 </code></pre>
 <h2 id="33-visualization">3.3 Visualization</h2>
 <p>Visualize the needles:</p>
-<pre><code class="language-python">plt.figure(figsize=(8, 4))
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Assuming L represents the length of the needle
+# and needs to be defined before use
+L = 1  # You might need to adjust this value based on your simulation setup
+
+plt.figure(figsize=(8, 4))
 for i in range(min(n_drops, 100)):  # Plot first 100 for clarity
     x_c = x_center[i]
     th = theta[i]
@@ -305,6 +314,7 @@ plt.axhline(1, color='blue', linestyle='--')
 plt.title(f"Buffon’s Needle Simulation\nEstimate: {pi_estimate:.5f}")
 plt.show()
 </code></pre>
+<p><img alt="image" src="https://github.com/user-attachments/assets/7ec66170-1333-4279-8f06-beac748cc49d"/></p>
 <p><strong>Description</strong>: The plot shows horizontal lines at <span class="arithmatex">\(y=0\)</span> and <span class="arithmatex">\(y=1\)</span>, with needles as line segments. Green needles cross a line; black ones don’t. The title displays the <span class="arithmatex">\(π\)</span> estimate.</p>
 <h2 id="34-analysis">3.4 Analysis</h2>
 <p>Test convergence:</p>
@@ -324,6 +334,7 @@ plt.ylabel('Absolute Error')
 plt.title('Convergence of π Estimate (Buffon)')
 plt.show()
 </code></pre>
+<p><img alt="image" src="https://github.com/user-attachments/assets/cdfade46-b438-446f-81ee-feee29154de6"/></p>
 <h3 id="34-analysis_1">3.4 Analysis</h3>
 <p><strong>Description</strong>: Similar to the circle method, error decreases with more drops, following <span class="arithmatex">\(O(1/\sqrt{N})\)</span>.</p>
 <p><strong>Comparison</strong>: Buffon’s Needle converges similarly but requires more geometric computation per iteration, making it less efficient than the circle method for the same number of samples.</p>
