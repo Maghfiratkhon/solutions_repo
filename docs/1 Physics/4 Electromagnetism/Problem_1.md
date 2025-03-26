@@ -10,10 +10,15 @@ $$
 $$
 
 where:
+
 - $\mathbf{F}$ is the force acting on a particle,
+  
 - $q$ is the charge of the particle,
+  
 - $\mathbf{E}$ is the electric field,
+  
 - $\mathbf{B}$ is the magnetic field,
+  
 - $\mathbf{v}$ is the velocity of the particle.
 
 This force plays a key role in a variety of systems such as particle accelerators, mass spectrometers, and plasma confinement devices. Understanding and simulating the effects of this force helps us explore particle trajectories and optimize the design of such systems.
@@ -31,7 +36,9 @@ The Lorentz force governs the behavior of charged particles in several key syste
 - **Plasma Confinement:** In fusion reactors and magnetic confinement devices (e.g., Tokamaks), the Lorentz force helps contain plasma by guiding the motion of charged particles within a magnetic field.
 
 The electric field $\mathbf{E}$ and magnetic field $\mathbf{B}$ influence the motion of the particle in distinct ways:
+
 - The electric field directly accelerates the particle along its direction.
+  
 - The magnetic field causes the particle to move in circular or helical trajectories, depending on the initial velocity.
 
 ### 2.2 Simulating Particle Motion
@@ -154,9 +161,13 @@ plot_trajectory(pos, "Crossed E and B Fields (Drift Motion)")
   $$
 
   where:
+
   - $q$ is the charge of the particle,
+    
   - $\mathbf{E}$ is the electric field,
+    
   - $\mathbf{v}$ is the velocity of the particle,
+    
   - $\mathbf{B}$ is the magnetic field.
 
 - **update_position_velocity()**: Using Euler's method, this function updates the particle's position and velocity at each time step. The particle's new position is calculated by adding the product of the velocity and the time step ($\mathbf{r}_{\text{new}} = \mathbf{r} + \mathbf{v} \cdot \Delta t$), while the velocity is updated based on the acceleration, which is derived from the Lorentz force.
