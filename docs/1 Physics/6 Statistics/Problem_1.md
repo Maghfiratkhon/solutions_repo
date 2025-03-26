@@ -196,7 +196,7 @@ The CLT is pivotal in:
 
 ### 1.7.2 Implications
 
-- The CLT justifies using normal-based methods (e.g., z-tests) even for non-normal populations, provided $n$ is sufficiently large.
+- The CLT justifies using normal-based methods (e.g., z-tests) even for non-normal populations, provided $hhn$ is sufficiently large.
 
 - Simulations reinforce that “sufficiently large” depends on the population’s shape and variance.
 
