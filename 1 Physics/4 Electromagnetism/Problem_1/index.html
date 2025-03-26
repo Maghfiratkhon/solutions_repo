@@ -178,12 +178,24 @@
 <div class="arithmatex">\[
 \mathbf{F} = q (\mathbf{E} + \mathbf{v} \times \mathbf{B})
 \]</div>
-<p>where:
-- <span class="arithmatex">\(\mathbf{F}\)</span> is the force acting on a particle,
-- <span class="arithmatex">\(q\)</span> is the charge of the particle,
-- <span class="arithmatex">\(\mathbf{E}\)</span> is the electric field,
-- <span class="arithmatex">\(\mathbf{B}\)</span> is the magnetic field,
-- <span class="arithmatex">\(\mathbf{v}\)</span> is the velocity of the particle.</p>
+<p>where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\mathbf{F}\)</span> is the force acting on a particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(q\)</span> is the charge of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbf{E}\)</span> is the electric field,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbf{B}\)</span> is the magnetic field,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbf{v}\)</span> is the velocity of the particle.</p>
+</li>
+</ul>
 <p>This force plays a key role in a variety of systems such as particle accelerators, mass spectrometers, and plasma confinement devices. Understanding and simulating the effects of this force helps us explore particle trajectories and optimize the design of such systems.</p>
 <h2 id="2-task">2. Task</h2>
 <h3 id="21-exploration-of-applications">2.1 Exploration of Applications</h3>
@@ -199,9 +211,15 @@
 <p><strong>Plasma Confinement:</strong> In fusion reactors and magnetic confinement devices (e.g., Tokamaks), the Lorentz force helps contain plasma by guiding the motion of charged particles within a magnetic field.</p>
 </li>
 </ul>
-<p>The electric field <span class="arithmatex">\(\mathbf{E}\)</span> and magnetic field <span class="arithmatex">\(\mathbf{B}\)</span> influence the motion of the particle in distinct ways:
-- The electric field directly accelerates the particle along its direction.
-- The magnetic field causes the particle to move in circular or helical trajectories, depending on the initial velocity.</p>
+<p>The electric field <span class="arithmatex">\(\mathbf{E}\)</span> and magnetic field <span class="arithmatex">\(\mathbf{B}\)</span> influence the motion of the particle in distinct ways:</p>
+<ul>
+<li>
+<p>The electric field directly accelerates the particle along its direction.</p>
+</li>
+<li>
+<p>The magnetic field causes the particle to move in circular or helical trajectories, depending on the initial velocity.</p>
+</li>
+</ul>
 <h3 id="22-simulating-particle-motion">2.2 Simulating Particle Motion</h3>
 <p>The goal of this task is to implement a simulation to compute and visualize the trajectory of a charged particle under various field configurations. We will simulate three key scenarios:</p>
 <ol>
@@ -316,12 +334,20 @@ plot_trajectory(pos, "Crossed E and B Fields (Drift Motion)")
 <p>$$
   \mathbf{F} = q (\mathbf{E} + \mathbf{v} \times \mathbf{B})
   $$</p>
-<p>where:
-  - <span class="arithmatex">\(q\)</span> is the charge of the particle,
-  - <span class="arithmatex">\(\mathbf{E}\)</span> is the electric field,
-  - <span class="arithmatex">\(\mathbf{v}\)</span> is the velocity of the particle,
-  - <span class="arithmatex">\(\mathbf{B}\)</span> is the magnetic field.</p>
+<p>where:</p>
 <ul>
+<li>
+<p><span class="arithmatex">\(q\)</span> is the charge of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbf{E}\)</span> is the electric field,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbf{v}\)</span> is the velocity of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbf{B}\)</span> is the magnetic field.</p>
+</li>
 <li>
 <p><strong>update_position_velocity()</strong>: Using Euler's method, this function updates the particle's position and velocity at each time step. The particle's new position is calculated by adding the product of the velocity and the time step (<span class="arithmatex">\(\mathbf{r}_{\text{new}} = \mathbf{r} + \mathbf{v} \cdot \Delta t\)</span>), while the velocity is updated based on the acceleration, which is derived from the Lorentz force.</p>
 </li>
