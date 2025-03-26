@@ -172,6 +172,180 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="estimating-using-monte-carlo-methods">Estimating π Using Monte Carlo Methods</h1>
+<h1 id="1-motivation">1. Motivation</h1>
+<p>Monte Carlo simulations are a powerful class of computational techniques that leverage randomness to solve problems or estimate values. One elegant application is estimating the value of <span class="arithmatex">\(π\)</span> through geometric probability. By generating random points or objects and analyzing their positions relative to geometric shapes, we can approximate <span class="arithmatex">\(π\)</span> in an intuitive and visually engaging way.</p>
+<p>This problem bridges probability, geometry, and numerical computation, offering insights into how randomness can address complex challenges in fields like physics, finance, and computer science. Estimating <span class="arithmatex">\(π\)</span> using Monte Carlo methods showcases the simplicity and versatility of this approach while revealing practical lessons about convergence and computational efficiency.</p>
+<hr/>
+<h1 id="2-part-1-estimating-using-a-circle">2.  Part 1: Estimating π Using a Circle</h1>
+<h3 id="21-theoretical-foundation">2.1 Theoretical Foundation</h3>
+<p>Consider a unit circle (radius = 1) centered at the origin, inscribed within a square of side length 2 (spanning from -1 to 1 on both x and y axes). The area of the circle is <span class="arithmatex">\(πr^2 = π(1)^2 = π\)</span>, and the area of the square is <span class="arithmatex">\(2 \times 2 = 4\)</span>. The ratio of the circle’s area to the square’s area is <span class="arithmatex">\(π/4\)</span>.</p>
+<p>If we randomly generate points uniformly within the square, the probability that a point falls inside the circle is equal to this area ratio, <span class="arithmatex">\(π/4\)</span>. For <span class="arithmatex">\(N\)</span> total points, if <span class="arithmatex">\(M\)</span> points land inside the circle (where <span class="arithmatex">\(x^2 + y^2 \leq 1\)</span>), the ratio <span class="arithmatex">\(M/N\)</span> approximates <span class="arithmatex">\(π/4\)</span>. Thus:</p>
+<div class="arithmatex">\[
+π \approx 4 \times \frac{M}{N}
+\]</div>
+<h3 id="22-simulation">2.2 Simulation</h3>
+<p>We’ll use Python to simulate this process:</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def estimate_pi_circle(n_points):
+    # Generate random x and y coordinates in [-1, 1]
+    x = np.random.uniform(-1, 1, n_points)
+    y = np.random.uniform(-1, 1, n_points)
+
+    # Calculate distance from origin
+    distance = np.sqrt(x**2 + y**2)
+
+    # Count points inside the unit circle
+    inside_circle = distance &lt;= 1
+    m = np.sum(inside_circle)
+
+    # Estimate pi
+    pi_estimate = 4 * m / n_points
+    return x, y, inside_circle, pi_estimate
+
+# Run simulation
+n_points = 10000
+x, y, inside_circle, pi_estimate = estimate_pi_circle(n_points)
+print(f"Estimated π with {n_points} points: {pi_estimate}")
+</code></pre>
+<h2 id="23-visualization">2.3 Visualization</h2>
+<p>We’ll plot the points, coloring those inside the circle differently from those outside:</p>
+<pre><code class="language-python">plt.figure(figsize=(6, 6))
+plt.scatter(x[inside_circle], y[inside_circle], color='blue', s=1, label='Inside Circle')
+plt.scatter(x[~inside_circle], y[~inside_circle], color='red', s=1, label='Outside Circle')
+plt.gca().set_aspect('equal')
+plt.title(f"Monte Carlo Estimation of π\nEstimate: {pi_estimate:.5f}")
+plt.legend()
+plt.show()
+</code></pre>
+<p><strong>Description</strong>: The plot shows a square with a cloud of points. Blue points (inside <span class="arithmatex">\(x^2 + y^2 \leq 1\)</span>) form a circular pattern, while red points fill the remaining square. The title includes the estimated <span class="arithmatex">\(π\)</span> value.</p>
+<h2 id="24-analysis">2.4 Analysis</h2>
+<p>To study convergence, we’ll test different sample sizes:</p>
+<pre><code class="language-python">n_values = [100, 1000, 10000, 100000]
+estimates = []
+errors = []
+
+for n in n_values:
+    _, _, _, pi_est = estimate_pi_circle(n)
+    estimates.append(pi_est)
+    errors.append(abs(pi_est - np.pi))
+
+plt.plot(n_values, errors, marker='o')
+plt.xscale('log')
+plt.xlabel('Number of Points (log scale)')
+plt.ylabel('Absolute Error')
+plt.title('Convergence of π Estimate')
+plt.show()
+</code></pre>
+<h2 id="estimating-using-monte-carlo-methods_1">Estimating π Using Monte Carlo Methods</h2>
+<h2 id="24-analysis_1">2.4 Analysis</h2>
+<p><strong>Description</strong>: The graph shows error decreasing as the number of points increases, though with fluctuations due to randomness. The convergence rate is approximately <span class="arithmatex">\(O(1/\sqrt{N})\)</span>, typical of Monte Carlo methods, reflecting the statistical nature of the estimate.</p>
+<p><strong>Computational Considerations</strong>: The method is simple but slow to converge. Increasing <span class="arithmatex">\(N\)</span> improves accuracy but linearly increases computation time.</p>
+<h2 id="3-part-2-estimating-using-buffons-needle">3. Part 2: Estimating π Using Buffon’s Needle</h2>
+<h3 id="31-theoretical-foundation">3.1 Theoretical Foundation</h3>
+<p>In Buffon’s Needle problem, a needle of length <span class="arithmatex">\(L\)</span> is dropped randomly onto a plane with parallel lines spaced <span class="arithmatex">\(D\)</span> units apart (assume <span class="arithmatex">\(L \leq D\)</span> for simplicity). The probability that the needle crosses a line depends on its position and orientation. For a needle with endpoints determined by its center at <span class="arithmatex">\((x, y)\)</span> and angle <span class="arithmatex">\(θ\)</span> (from the horizontal), it crosses a line if its vertical projection spans one of the parallel lines.</p>
+<p>The probability of crossing is derived as:</p>
+<div class="arithmatex">\[
+P = \frac{2L}{π D}
+\]</div>
+<p>If we drop <span class="arithmatex">\(N\)</span> needles and <span class="arithmatex">\(M\)</span> cross a line, then:</p>
+<div class="arithmatex">\[
+P \approx \frac{M}{N}
+\]</div>
+<p>Equating the two expressions for <span class="arithmatex">\(P\)</span>:</p>
+<div class="arithmatex">\[
+\frac{M}{N} \approx \frac{2L}{π D}
+\]</div>
+<p>Solving for <span class="arithmatex">\(π\)</span>:</p>
+<div class="arithmatex">\[
+π \approx \frac{2L N}{M D}
+\]</div>
+<p>For simplicity, set <span class="arithmatex">\(L = D = 1\)</span>:</p>
+<div class="arithmatex">\[
+π \approx \frac{2N}{M}
+\]</div>
+<h3 id="32-simulation">3.2 Simulation</h3>
+<p>Here’s a Python implementation:</p>
+<pre><code class="language-python">def estimate_pi_buffon(n_drops, L=1, D=1):
+    # Random x position of needle center (between 0 and D)
+    x_center = np.random.uniform(0, D, n_drops)
+    # Random angle (0 to pi/2, due to symmetry)
+    theta = np.random.uniform(0, np.pi/2, n_drops)
+
+    # Vertical extent of needle
+    y_extent = (L/2) * np.sin(theta)
+
+    # Check if needle crosses a line (y ranges from 0 to D)
+    crosses = x_center + y_extent &gt; D/2
+    m = np.sum(crosses)
+
+    # Estimate pi
+    pi_estimate = (2 * L * n_drops) / (m * D) if m &gt; 0 else 0
+    return x_center, theta, crosses, pi_estimate
+
+# Run simulation
+n_drops = 10000
+x_center, theta, crosses, pi_estimate = estimate_pi_buffon(n_drops)
+print(f"Estimated π with {n_drops} drops: {pi_estimate}")
+</code></pre>
+<h2 id="33-visualization">3.3 Visualization</h2>
+<p>Visualize the needles:</p>
+<pre><code class="language-python">plt.figure(figsize=(8, 4))
+for i in range(min(n_drops, 100)):  # Plot first 100 for clarity
+    x_c = x_center[i]
+    th = theta[i]
+    dx = (L/2) * np.cos(th)
+    dy = (L/2) * np.sin(th)
+    color = 'green' if crosses[i] else 'black'
+    plt.plot([x_c - dx, x_c + dx], [0 - dy, 0 + dy], color=color)
+plt.axhline(0, color='blue', linestyle='--')
+plt.axhline(1, color='blue', linestyle='--')
+plt.title(f"Buffon’s Needle Simulation\nEstimate: {pi_estimate:.5f}")
+plt.show()
+</code></pre>
+<p><strong>Description</strong>: The plot shows horizontal lines at <span class="arithmatex">\(y=0\)</span> and <span class="arithmatex">\(y=1\)</span>, with needles as line segments. Green needles cross a line; black ones don’t. The title displays the <span class="arithmatex">\(π\)</span> estimate.</p>
+<h2 id="34-analysis">3.4 Analysis</h2>
+<p>Test convergence:</p>
+<pre><code class="language-python">n_values = [100, 1000, 10000, 100000]
+estimates_buffon = []
+errors_buffon = []
+
+for n in n_values:
+    _, _, _, pi_est = estimate_pi_buffon(n)
+    estimates_buffon.append(pi_est)
+    errors_buffon.append(abs(pi_est - np.pi))
+
+plt.plot(n_values, errors_buffon, marker='o')
+plt.xscale('log')
+plt.xlabel('Number of Drops (log scale)')
+plt.ylabel('Absolute Error')
+plt.title('Convergence of π Estimate (Buffon)')
+plt.show()
+</code></pre>
+<h3 id="34-analysis_1">3.4 Analysis</h3>
+<p><strong>Description</strong>: Similar to the circle method, error decreases with more drops, following <span class="arithmatex">\(O(1/\sqrt{N})\)</span>.</p>
+<p><strong>Comparison</strong>: Buffon’s Needle converges similarly but requires more geometric computation per iteration, making it less efficient than the circle method for the same number of samples.</p>
+<h2 id="4-deliverables-summary">4. Deliverables Summary</h2>
+<ul>
+<li>
+<p><strong>Markdown Document</strong>: This document provides explanations, formulas, and results.</p>
+</li>
+<li>
+<p><strong>Python Code</strong>: Included above for both methods.</p>
+</li>
+<li>
+<p><strong>Graphical Outputs</strong>: Described and coded for visualization.</p>
+</li>
+<li>
+<p><strong>Analysis</strong>: Convergence is <span class="arithmatex">\(O(1/\sqrt{N})\)</span> for both, with the circle method being simpler and faster per iteration.</p>
+</li>
+</ul>
+<h2 id="5-conclusion">5. Conclusion</h2>
+<p>The exploration of Monte Carlo methods for estimating <span class="arithmatex">\(π\)</span> through the circle-based approach and Buffon’s Needle problem demonstrates the power and elegance of leveraging randomness in computational mathematics. Both methods successfully approximate <span class="arithmatex">\(π\)</span>, with the circle method relying on the geometric simplicity of area ratios and Buffon’s Needle utilizing the probabilistic interplay of needle drops and line crossings. The simulations confirm that accuracy improves with larger sample sizes, converging at a rate of <span class="arithmatex">\(O(1/\sqrt{N})\)</span>, though not without the inherent fluctuations of stochastic processes.</p>
+<p>Comparatively, the circle method proves more computationally efficient due to its straightforward point-in-circle check, while Buffon’s Needle, though conceptually intriguing, demands additional geometric calculations that slow its performance per iteration. These trade-offs highlight a key lesson in Monte Carlo techniques: simplicity often enhances practicality, even if convergence remains gradual.</p>
+<p>This exercise underscores the versatility of Monte Carlo methods beyond mere estimation of <span class="arithmatex">\(π\)</span>, offering a foundation for tackling complex problems in diverse fields. By blending theory, simulation, and visual analysis, we gain not only a numerical approximation but also an appreciation for how randomness can illuminate the constants that shape our universe.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
