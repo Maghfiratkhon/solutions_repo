@@ -115,12 +115,14 @@ Below is an example table in Markdown (values are illustrative; replace with you
 | 1     | 20.15        | 1.000   |                         |                       |         |                |            |                   |
 | 2     | 20.22        | 1.000   |                         |                       |         |                |            |                   |
 | ...   | ...          | ...     |                         |                       |         |                |            |                   |
-| 10    | 20.18        | 1.000   | 20.20                  | 0.05                  | 2.020   | 0.0016         | 9.79       | 0.03              |
+| 10    | 20.18        | 1.000   | 20.20                   | 0.05                  | 2.020   | 0.0016         | 9.79       | 0.03              |
 ```
 
 
 Given:
+
 - $L = 1.000 \pm 0.0005 \, \text{m}$ (assuming ruler resolution of 1 mm).
+  
 - $\overline{T_{10}}$, $\sigma_{T_{10}}$, $T$, $\delta T$, $g$, and $\delta g$ calculated from the data.
 
 ## 6.2 Discussion on Sources of Uncertainty
