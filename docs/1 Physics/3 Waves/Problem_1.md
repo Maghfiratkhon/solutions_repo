@@ -19,10 +19,15 @@ $$
 
 Where:
 - $\eta(x, y, t)$ is the displacement of the water surface at point $(x, y)$ at time $t$,
+  
 - $A$ is the amplitude of the wave,
+  
 - $k$ is the wave number, related to the wavelength $\lambda$ by $k = \frac{2\pi}{\lambda}$,
+  
 - $\omega$ is the angular frequency, related to the frequency $f$ by $\omega = 2\pi f$,
+  
 - $r = \sqrt{(x - x_s)^2 + (y - y_s)^2}$ is the distance from the source to the point $(x, y)$,
+  
 - $\phi$ is the initial phase.
 
 ### Problem Statement
