@@ -62,6 +62,8 @@ plt.title(f"Monte Carlo Estimation of π\nEstimate: {pi_estimate:.5f}")
 plt.legend()
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/d5798ae0-9968-46c8-a9d7-40073ed65c07)
+
 
 **Description**: The plot shows a square with a cloud of points. Blue points (inside $x^2 + y^2 \leq 1$) form a circular pattern, while red points fill the remaining square. The title includes the estimated $π$ value.
 
@@ -84,6 +86,7 @@ plt.ylabel('Absolute Error')
 plt.title('Convergence of π Estimate')
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/f581a6af-ff0f-442d-8d13-da67282536cd)
 
 ## Estimating π Using Monte Carlo Methods
 
@@ -161,6 +164,13 @@ print(f"Estimated π with {n_drops} drops: {pi_estimate}")
 Visualize the needles:
 
 ```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Assuming L represents the length of the needle
+# and needs to be defined before use
+L = 1  # You might need to adjust this value based on your simulation setup
+
 plt.figure(figsize=(8, 4))
 for i in range(min(n_drops, 100)):  # Plot first 100 for clarity
     x_c = x_center[i]
@@ -174,6 +184,8 @@ plt.axhline(1, color='blue', linestyle='--')
 plt.title(f"Buffon’s Needle Simulation\nEstimate: {pi_estimate:.5f}")
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/7ec66170-1333-4279-8f06-beac748cc49d)
+
 **Description**: The plot shows horizontal lines at $y=0$ and $y=1$, with needles as line segments. Green needles cross a line; black ones don’t. The title displays the $π$ estimate.
 
 ## 3.4 Analysis
@@ -196,6 +208,7 @@ plt.ylabel('Absolute Error')
 plt.title('Convergence of π Estimate (Buffon)')
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/cdfade46-b438-446f-81ee-feee29154de6)
 
 ### 3.4 Analysis
 
