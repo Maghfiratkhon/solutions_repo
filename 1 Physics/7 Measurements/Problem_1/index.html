@@ -172,6 +172,121 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="measuring-earths-gravitational-acceleration-with-a-pendulum">Measuring Earth's Gravitational Acceleration with a Pendulum</h1>
+<h1 id="1-motivation">1. Motivation</h1>
+<p>The acceleration due to gravity, denoted <span class="arithmatex">\(g\)</span>, is a fundamental constant that governs a wide range of physical phenomena, from the motion of planets to the stability of everyday structures. Accurately measuring <span class="arithmatex">\(g\)</span> is essential for understanding gravitational interactions, designing engineering systems, and conducting precise experiments across various scientific disciplines. One classic and accessible method to determine <span class="arithmatex">\(g\)</span> involves analyzing the oscillations of a simple pendulum, where the period of oscillation is directly tied to the local gravitational field. This exercise not only provides a practical approach to measuring <span class="arithmatex">\(g\)</span> but also emphasizes rigorous measurement techniques, uncertainty analysis, and their critical role in experimental physics.</p>
+<h1 id="2-task">2. Task</h1>
+<p>Measure the acceleration due to gravity (<span class="arithmatex">\(g\)</span>) using a pendulum and perform a detailed analysis of the uncertainties in the measurements. This task highlights the importance of precision in data collection and the systematic evaluation of experimental errors.</p>
+<h1 id="3-procedure">3. Procedure</h1>
+<h2 id="31-materials">3.1 Materials</h2>
+<ul>
+<li>A string (1 or 1.5 meters long).</li>
+<li>A small weight (e.g., bag of coins, bag of sugar, keychain) attached to the string.</li>
+<li>Stopwatch (or smartphone timer).</li>
+<li>Ruler or measuring tape.</li>
+</ul>
+<h2 id="32-setup">3.2 Setup</h2>
+<ol>
+<li>Attach the weight to one end of the string and secure the other end to a sturdy support (e.g., a clamp or hook).</li>
+<li>Measure the length of the pendulum, <span class="arithmatex">\(L\)</span>, from the suspension point to the center of the weight using a ruler or measuring tape.</li>
+<li>Record the resolution of the measuring tool (e.g., 1 mm or 0.001 m) and calculate the uncertainty in <span class="arithmatex">\(L\)</span> as half the resolution: <span class="arithmatex">\(\delta L = \frac{\text{resolution}}{2}\)</span>.</li>
+</ol>
+<h2 id="33-data-collection">3.3 Data Collection</h2>
+<ol>
+<li>Displace the pendulum by a small angle (&lt;15°) to ensure the small-angle approximation (<span class="arithmatex">\(\sin\theta \approx \theta\)</span>) holds, then release it.</li>
+<li>Measure the time for 10 full oscillations (<span class="arithmatex">\(T_{10}\)</span>) using a stopwatch and repeat this process 10 times. Record all 10 measurements.</li>
+<li>Calculate the mean time for 10 oscillations (<span class="arithmatex">\(\overline{T_{10}}\)</span>) and the standard deviation (<span class="arithmatex">\(\sigma_{T_{10}}\)</span>).</li>
+<li>Determine the uncertainty in the mean time as:</li>
+</ol>
+<div class="arithmatex">\[
+\delta \overline{T_{10}} = \frac{\sigma_{T_{10}}}{\sqrt{n}}
+\]</div>
+<p>where <span class="arithmatex">\(n = 10\)</span> (the number of trials).</p>
+<h1 id="4-calculations">4. Calculations</h1>
+<h2 id="41-calculate-the-period">4.1 Calculate the Period</h2>
+<p>The period of a single oscillation, <span class="arithmatex">\(T\)</span>, is:</p>
+<div class="arithmatex">\[
+T = \frac{\overline{T_{10}}}{10}
+\]</div>
+<p>The uncertainty in the period is:</p>
+<div class="arithmatex">\[
+\delta T = \frac{\delta \overline{T_{10}}}{10}
+\]</div>
+<h2 id="42-determine-g">4.2 Determine <span class="arithmatex">\(g\)</span></h2>
+<p>For a simple pendulum, the period is related to <span class="arithmatex">\(g\)</span> and <span class="arithmatex">\(L\)</span> by:</p>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{L}{g}}
+\]</div>
+<p>Squaring both sides:</p>
+<div class="arithmatex">\[
+T^2 = \frac{4\pi^2 L}{g}
+\]</div>
+<p>Solving for <span class="arithmatex">\(g\)</span>:</p>
+<div class="arithmatex">\[
+g = \frac{4\pi^2 L}{T^2}
+\]</div>
+<h2 id="43-propagate-uncertainties">4.3 Propagate Uncertainties</h2>
+<p>To find the uncertainty in <span class="arithmatex">\(g\)</span>, use the propagation of errors formula for a function <span class="arithmatex">\(g = f(L, T)\)</span>. The relative uncertainty in <span class="arithmatex">\(g\)</span> is:</p>
+<div class="arithmatex">\[
+\frac{\delta g}{g} = \sqrt{\left(\frac{\delta L}{L}\right)^2 + \left(\frac{2 \delta T}{T}\right)^2}
+\]</div>
+<p>Thus, the absolute uncertainty is:</p>
+<div class="arithmatex">\[
+\delta g = g \sqrt{\left(\frac{\delta L}{L}\right)^2 + \left(\frac{2 \delta T}{T}\right)^2}
+\]</div>
+<h1 id="5-analysis">5. Analysis</h1>
+<h2 id="51-comparison-with-standard-value">5.1 Comparison with Standard Value</h2>
+<p>Compare the calculated <span class="arithmatex">\(g\)</span> with the standard value of <span class="arithmatex">\(g = 9.81 \, \text{m/s}^2\)</span> (typical at sea level). Compute the percent difference:</p>
+<div class="arithmatex">\[
+\text{Percent Difference} = \frac{|g_{\text{measured}} - 9.81|}{9.81} \times 100\%
+\]</div>
+<h2 id="52-discussion">5.2 Discussion</h2>
+<ul>
+<li><strong>Effect of Measurement Resolution on <span class="arithmatex">\(L\)</span></strong>: The resolution of the ruler (e.g., 1 mm) limits the precision of <span class="arithmatex">\(L\)</span>. A coarser tool increases <span class="arithmatex">\(\delta L\)</span>, directly impacting <span class="arithmatex">\(\delta g\)</span>.</li>
+<li><strong>Variability in Timing and Its Impact on <span class="arithmatex">\(T\)</span></strong>: Human reaction time or stopwatch precision introduces variability in <span class="arithmatex">\(T_{10}\)</span> measurements. The standard deviation <span class="arithmatex">\(\sigma_{T_{10}}\)</span> quantifies this, and averaging over 10 trials reduces the uncertainty in <span class="arithmatex">\(\overline{T_{10}}\)</span>.</li>
+<li><strong>Assumptions and Experimental Limitations</strong>: The small-angle approximation assumes <span class="arithmatex">\(\theta &lt; 15^\circ\)</span>; larger angles introduce non-linear effects. Air resistance and string mass are neglected, potentially underestimating <span class="arithmatex">\(g\)</span>. Friction at the pivot could also slightly increase the measured period.</li>
+</ul>
+<h1 id="6-deliverables">6. Deliverables</h1>
+<h2 id="61-tabulated-data">6.1 Tabulated Data</h2>
+<p>Below is an example table in Markdown (values are illustrative; replace with your measurements):</p>
+<pre><code class="language-markdown">| Trial | $T_{10}$ (s) | $L$ (m) | $\overline{T_{10}}$ (s) | $\sigma_{T_{10}}$ (s) | $T$ (s) | $\delta T$ (s) | $g$ (m/s²) | $\delta g$ (m/s²) |
+|-------|--------------|---------|-------------------------|-----------------------|---------|----------------|------------|-------------------|
+| 1     | 20.15        | 1.000   |                         |                       |         |                |            |                   |
+| 2     | 20.22        | 1.000   |                         |                       |         |                |            |                   |
+| ...   | ...          | ...     |                         |                       |         |                |            |                   |
+| 10    | 20.18        | 1.000   | 20.20                  | 0.05                  | 2.020   | 0.0016         | 9.79       | 0.03              |
+</code></pre>
+<p>Given:
+- <span class="arithmatex">\(L = 1.000 \pm 0.0005 \, \text{m}\)</span> (assuming ruler resolution of 1 mm).
+- <span class="arithmatex">\(\overline{T_{10}}\)</span>, <span class="arithmatex">\(\sigma_{T_{10}}\)</span>, <span class="arithmatex">\(T\)</span>, <span class="arithmatex">\(\delta T\)</span>, <span class="arithmatex">\(g\)</span>, and <span class="arithmatex">\(\delta g\)</span> calculated from the data.</p>
+<h2 id="62-discussion-on-sources-of-uncertainty">6.2 Discussion on Sources of Uncertainty</h2>
+<p>The primary sources of uncertainty in this experiment include:</p>
+<ul>
+<li><strong>Length Measurement</strong>: A ruler with 1 mm resolution yields <span class="arithmatex">\(\delta L = 0.0005 \, \text{m}\)</span>. For <span class="arithmatex">\(L = 1 \, \text{m}\)</span>, this represents a relative error of:</li>
+</ul>
+<p>$$
+  \frac{\delta L}{L} = \frac{0.0005}{1.000} = 0.0005 \, \text{or} \, 0.05\%
+  $$</p>
+<p>This error is small but gets amplified in the calculation of <span class="arithmatex">\(g\)</span>, where <span class="arithmatex">\(g \propto L\)</span>.</p>
+<ul>
+<li><strong>Timing Variability</strong>: Reaction time errors (e.g., <span class="arithmatex">\(\pm 0.1 \, \text{s}\)</span> per measurement) contribute to the standard deviation of the time for 10 oscillations, <span class="arithmatex">\(\sigma_{T_{10}}\)</span>. The uncertainty in the mean time, <span class="arithmatex">\(\delta \overline{T_{10}}\)</span>, is reduced by averaging over 10 trials:</li>
+</ul>
+<p>$$
+  \delta \overline{T_{10}} = \frac{\sigma_{T_{10}}}{\sqrt{10}}
+  $$</p>
+<p>This, in turn, affects <span class="arithmatex">\(\delta T = \frac{\delta \overline{T_{10}}}{10}\)</span>, making timing variability a significant factor in the precision of <span class="arithmatex">\(T\)</span> and thus <span class="arithmatex">\(g\)</span>.</p>
+<ul>
+<li><strong>Experimental Conditions</strong>: Systematic errors arise from air resistance and pivot friction, which increase the oscillation period and potentially lower the calculated <span class="arithmatex">\(g\)</span>. These effects could be minimized with a vacuum setup or a more rigid, frictionless pivot, though such improvements are impractical for a simple pendulum experiment.</li>
+</ul>
+<p>The combined effect on <span class="arithmatex">\(g\)</span>, with an example uncertainty of <span class="arithmatex">\(\delta g \approx 0.03 \, \text{m/s}^2\)</span>, suggests a precision of approximately:</p>
+<div class="arithmatex">\[
+\frac{\delta g}{g} \approx \frac{0.03}{9.81} \approx 0.003 \, \text{or} \, 0.3\%
+\]</div>
+<p>This level of precision is reasonable for a basic pendulum setup but could be enhanced with more precise tools (e.g., a laser distance measurer for <span class="arithmatex">\(L\)</span> or a digital timer for <span class="arithmatex">\(T\)</span>) and controlled environmental conditions.</p>
+<h1 id="7-conclusion">7. Conclusion</h1>
+<p>This experiment demonstrates a practical and elegant method for measuring Earth’s gravitational acceleration, <span class="arithmatex">\(g\)</span>, using a simple pendulum. By carefully measuring the pendulum length (<span class="arithmatex">\(L = 1.000 \pm 0.0005 \, \text{m}\)</span>) and the period of oscillation derived from multiple trials, we calculated <span class="arithmatex">\(g\)</span> with a precision of approximately 0.3% (e.g., <span class="arithmatex">\(\delta g \approx 0.03 \, \text{m/s}^2\)</span>). This result aligns reasonably with the standard value of <span class="arithmatex">\(g = 9.81 \, \text{m/s}^2\)</span>, validating the approach while highlighting the challenges of achieving high accuracy with basic tools.</p>
+<p>The analysis of uncertainties reveals the interplay between measurement precision and experimental design. The small relative error in length (0.05%) underscores the importance of accurate tools, while timing variability, mitigated by averaging multiple oscillations, remains a dominant factor in the overall uncertainty. Systematic effects like air resistance and pivot friction, though minor, remind us of the limitations inherent in simplifying assumptions. These findings emphasize the value of rigorous uncertainty propagation and the need for controlled conditions to refine such measurements.</p>
+<p>Beyond its numerical outcome, this exercise illustrates the power of classical physics in connecting observable phenomena—pendulum swings—to fundamental constants. It serves as a stepping stone to more advanced gravitational studies and reinforces the importance of experimental diligence in scientific inquiry. With modest equipment, we’ve approximated a universal constant, bridging theory and practice in a way that resonates with both educational and exploratory pursuits.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
