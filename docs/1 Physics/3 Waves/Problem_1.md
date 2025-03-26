@@ -18,6 +18,7 @@ $$
 $$
 
 Where:
+
 - $\eta(x, y, t)$ is the displacement of the water surface at point $(x, y)$ at time $t$,
   
 - $A$ is the amplitude of the wave,
